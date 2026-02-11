@@ -89,15 +89,14 @@
         }
     </script>
 </head>
-<body class="bg-brand-950 text-white antialiased selection:bg-brand-600 selection:text-white">
+<body class="bg-brand-950 text-white antialiased selection:bg-brand-600 selection:text-white overflow-x-hidden">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 transition-all duration-300 glass border-b-0 border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <i data-lucide="shield" class="w-8 h-8 text-brand-600 fill-brand-600/20"></i>
-                <span class="font-display font-medium text-2xl tracking-tight uppercase">Sword &amp; Shield</span>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <img src="https://ik.imagekit.io/primo/CCS/swordandshield.png" alt="Sword &amp; Shield" class="h-8 sm:h-10 w-auto max-w-[180px]">
+            </a>
             
             <div class="hidden md:flex items-center gap-10">
                 <a href="#membership" class="text-neutral-300 hover:text-white text-lg transition-colors">Membership</a>
@@ -112,14 +111,24 @@
                 </span>
             </button>
             
-            <button class="md:hidden text-white">
-                <i data-lucide="menu" class="w-8 h-8"></i>
+            <button type="button" class="md:hidden text-white p-2 -mr-2 rounded-lg hover:bg-white/10 transition-colors aria-expanded="false"" id="mobile-menu-btn" aria-label="Open menu">
+                <i data-lucide="menu" class="w-8 h-8" id="menu-icon"></i>
+                <i data-lucide="x" class="w-8 h-8 hidden" id="close-icon"></i>
             </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 glass border-b border-white/5 px-4 py-4">
+            <div class="flex flex-col gap-4">
+                <a href="#membership" class="text-neutral-300 hover:text-white text-lg py-2">Membership</a>
+                <a href="#impact" class="text-neutral-300 hover:text-white text-lg py-2">Impact</a>
+                <a href="#sponsors" class="text-neutral-300 hover:text-white text-lg py-2">Sponsors</a>
+                <a href="#faq" class="text-neutral-300 hover:text-white text-lg py-2">FAQ</a>
+                <a href="#" class="block w-full py-3 rounded-lg bg-white text-brand-950 font-medium text-center">Join Sword &amp; Shield</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section with Video Background -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-16 sm:pt-20 overflow-hidden">
         <!-- Video Background -->
         <div class="absolute inset-0 z-0">
             <video autoplay="" loop="" muted="" playsinline="" class="w-full h-full object-cover opacity-40">
@@ -132,7 +141,7 @@
             <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-900/20 rounded-full blur-[100px]"></div>
         </div>
 
-        <div class="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center mt-10">
+        <div class="relative z-10 container mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mt-6 sm:mt-10">
             
             <!-- Hero Text -->
             <div class="space-y-8">
@@ -144,21 +153,21 @@
                     <span class="text-sm font-medium tracking-wide uppercase">Supporting Warriors</span>
                 </div>
 
-                <h1 class="text-6xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter">
                     Power <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-white">Excellence.</span> <br>
                     Fuel Champions.
                 </h1>
 
-                <p class="text-xl text-neutral-300 max-w-lg leading-relaxed">
+                <p class="text-base sm:text-xl text-neutral-300 max-w-lg leading-relaxed">
                     Your Sword &amp; Shield membership empowers Warriors across athletics, academics, fine arts, and spiritual development.
                 </p>
 
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <button class="h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-lg transition-all shadow-[0_0_40px_-10px_rgba(185,28,28,0.5)] flex items-center gap-3">
-                        Join Sword &amp; Shield <i data-lucide="shield" class="w-5 h-5"></i>
+                <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
+                    <button class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-base sm:text-lg transition-all shadow-[0_0_40px_-10px_rgba(185,28,28,0.5)] flex items-center justify-center gap-3">
+                        Join Sword &amp; Shield <img src="https://ik.imagekit.io/primo/CCS/shield.png" alt="" class="w-5 h-5 inline-block flex-shrink-0" aria-hidden="true">
                     </button>
-                    <button class="h-14 px-8 rounded-xl border-2 border-white/50 hover:bg-white/10 text-white font-medium text-lg transition-all flex items-center gap-3">
+                    <button class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl border-2 border-white/50 hover:bg-white/10 text-white font-medium text-base sm:text-lg transition-all flex items-center justify-center gap-3">
                         Become a Business Sponsor
                     </button>
                 </div>
@@ -183,9 +192,9 @@
             </div>
 
             <!-- Floating Dynamic Card (Reference Style) -->
-            <div class="relative hidden lg:block">
-                <!-- Decorative Elements behind -->
-                <div class="absolute top-10 right-10 w-full h-full border-2 border-brand-600/20 rounded-3xl translate-x-4 translate-y-4"></div>
+            <div class="relative lg:block">
+                <!-- Decorative Elements behind (hidden on small screens to avoid overflow) -->
+                <div class="absolute top-10 right-10 w-full h-full border-2 border-brand-600/20 rounded-3xl translate-x-4 translate-y-4 hidden lg:block" aria-hidden="true"></div>
                 
                 <!-- Main Card -->
                 <div class="relative bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden shadow-2xl">
@@ -201,24 +210,12 @@
                         </div>
                     </div>
                     <div class="p-6 space-y-4">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
-                                <i data-lucide="trophy" class="w-5 h-5 text-brand-500"></i>
-                                <span class="text-sm font-medium">Athletics</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
-                                <i data-lucide="music" class="w-5 h-5 text-brand-500"></i>
-                                <span class="text-sm font-medium">Fine Arts</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
-                                <i data-lucide="book-open" class="w-5 h-5 text-brand-500"></i>
-                                <span class="text-sm font-medium">Academics</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
-                                <i data-lucide="heart" class="w-5 h-5 text-brand-500"></i>
-                                <span class="text-sm font-medium">Spiritual Life</span>
-                            </div>
-                        </div>
+                        <form class="space-y-3" action="#" method="post">
+                            <input type="text" name="full_name" placeholder="Your name" required class="w-full px-4 py-2.5 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-brand-500">
+                            <input type="tel" name="phone" placeholder="Phone number" class="w-full px-4 py-2.5 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-brand-500">
+                            <input type="email" name="email" placeholder="Email address" required class="w-full px-4 py-2.5 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-brand-500">
+                            <button type="submit" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-colors">Make a Difference</button>
+                        </form>
                         <p class="text-xs text-neutral-500 text-center">Every membership dollar goes directly to student programs.</p>
                     </div>
                 </div>
@@ -227,67 +224,67 @@
     </section>
 
     <!-- Value Proposition -->
-    <section class="relative overflow-hidden bg-neutral-950 min-h-[85vh] flex flex-col justify-center py-20 sm:py-28 lg:py-36" id="membership">
+    <section class="relative overflow-hidden bg-neutral-950 min-h-[70vh] sm:min-h-[85vh] flex flex-col justify-center py-12 sm:py-20 md:py-28 lg:py-36" id="membership">
         <!-- Background image layer -->
         <div class="absolute inset-0 z-0" style="background-image: url('https://jhm-cms.images.sardius.media/media/wqopqrh2/2024-swordshield-sup-ccs-webhero-1440x600-v02.jpg?fit=cover&width=1440&height=600'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
         <!-- Dark overlay on top of image -->
         <div class="absolute inset-0 z-[1] pointer-events-none" style="background-color: rgba(10, 10, 10, 0.88);" aria-hidden="true"></div>
         <div class="absolute right-0 top-1/4 w-1/2 h-1/2 bg-gradient-to-b from-brand-900/10 to-transparent blur-[100px] z-0"></div>
-        <div class="max-w-[1600px] mx-auto px-6 relative z-10">
-            <div class="mb-16">
-                <h2 class="text-5xl md:text-7xl font-medium uppercase tracking-tighter leading-none mb-4">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 relative z-10">
+            <div class="mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-medium uppercase tracking-tighter leading-none mb-4">
                     One Membership. <br> <span class="text-brand-600">Total Impact.</span>
                 </h2>
-                <p class="text-xl text-neutral-400 max-w-2xl">Sword &amp; Shield is Cornerstone Christian Schools' unified support program that funds excellence across all student activities. Your membership directly supports:</p>
+                <p class="text-base sm:text-xl text-neutral-400 max-w-2xl">Sword &amp; Shield is Cornerstone Christian Schools' unified support program that funds excellence across all student activities. Your membership directly supports:</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[620px] flex flex-col justify-end p-8 text-center hover:border-brand-600/50 transition-colors group">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[380px] sm:min-h-[480px] lg:min-h-[620px] flex flex-col justify-end p-6 sm:p-8 text-center hover:border-brand-600/50 transition-colors group">
                     <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://ik.imagekit.io/primo/CCS/atletics.png');"></div>
                     <div class="absolute inset-0 z-[1] bg-gradient-to-t from-neutral-950/95 via-neutral-950/60 to-transparent"></div>
-                    <h3 class="font-display text-4xl md:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">Athletics</h3>
+                    <h3 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">Athletics</h3>
                     <p class="text-neutral-300 text-sm leading-relaxed relative z-10">Train Warriors to compete with Kingdom perspective</p>
                 </div>
-                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[620px] flex flex-col justify-end p-8 text-center hover:border-brand-600/50 transition-colors group">
+                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[380px] sm:min-h-[480px] lg:min-h-[620px] flex flex-col justify-end p-6 sm:p-8 text-center hover:border-brand-600/50 transition-colors group">
                     <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://ik.imagekit.io/primo/CCS/fine-arts.png');"></div>
                     <div class="absolute inset-0 z-[1] bg-gradient-to-t from-neutral-950/95 via-neutral-950/60 to-transparent"></div>
-                    <h3 class="font-display text-4xl md:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">Fine Arts</h3>
+                    <h3 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">Fine Arts</h3>
                     <p class="text-neutral-300 text-sm leading-relaxed relative z-10">Award-winning theater, music, and visual arts</p>
                 </div>
-                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[620px] flex flex-col justify-end p-8 text-center hover:border-brand-600/50 transition-colors group">
+                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[380px] sm:min-h-[480px] lg:min-h-[620px] flex flex-col justify-end p-6 sm:p-8 text-center hover:border-brand-600/50 transition-colors group">
                     <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://ik.imagekit.io/primo/CCS/robotics.png');"></div>
                     <div class="absolute inset-0 z-[1] bg-gradient-to-t from-neutral-950/95 via-neutral-950/60 to-transparent"></div>
-                    <h3 class="font-display text-4xl md:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">Academics</h3>
+                    <h3 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">Academics</h3>
                     <p class="text-neutral-300 text-sm leading-relaxed relative z-10">STEM, robotics, and 4-H programs</p>
                 </div>
-                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[620px] flex flex-col justify-end p-8 text-center hover:border-brand-600/50 transition-colors group">
+                <div class="relative rounded-3xl border border-neutral-800 overflow-hidden min-h-[380px] sm:min-h-[480px] lg:min-h-[620px] flex flex-col justify-end p-6 sm:p-8 text-center hover:border-brand-600/50 transition-colors group">
                     <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://ik.imagekit.io/primo/CCS/4h.png');"></div>
                     <div class="absolute inset-0 z-[1] bg-gradient-to-t from-neutral-950/95 via-neutral-950/60 to-transparent"></div>
-                    <h3 class="font-display text-4xl md:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">4-H</h3>
+                    <h3 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight mb-3 relative z-10">4-H</h3>
                     <p class="text-neutral-300 text-sm leading-relaxed relative z-10">Character development and discipleship</p>
                 </div>
             </div>
-            <div class="mt-10 p-6 rounded-2xl bg-brand-600 border border-brand-500/50">
-                <p class="text-lg text-white"><span class="font-semibold">Every membership dollar</span> goes directly to student programs, equipment, and opportunities.</p>
+            <div class="mt-8 sm:mt-10 p-4 sm:p-6 rounded-2xl bg-black/45 border border-brand-600">
+                <p class="text-base sm:text-lg text-white"><span class="font-semibold">Every membership dollar</span> goes directly to student programs, equipment, and opportunities.</p>
             </div>
         </div>
     </section>
 
     <!-- Membership Tiers / Sponsorship Levels -->
-    <section class="py-24 bg-neutral-900 relative">
+    <section class="py-12 sm:py-16 lg:py-24 bg-neutral-900 relative">
         <div class="w-full px-4 sm:px-6 lg:px-8">
-            <div class="mb-12">
-                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Choose Your Impact Level</h2>
-                <p class="text-xl text-neutral-400 max-w-2xl">Select the sponsorship level that fits your business and see the direct impact on our Warriors.</p>
+            <div class="mb-8 sm:mb-12">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Choose Your Impact Level</h2>
+                <p class="text-base sm:text-xl text-neutral-400 max-w-2xl">Select the sponsorship level that fits your business and see the direct impact on our Warriors.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4">
                 <!-- Red Level -->
                 <div class="bg-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden flex flex-col">
                     <div class="aspect-square w-full flex-shrink-0">
                         <img src="https://jhm-cms.images.sardius.media/media/sjthtiwn/v2-warriorred.jpg?fit=cover&width=400&height=400" alt="Football game" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex flex-col flex-1 min-h-0">
-                    <p class="text-4xl font-display font-medium text-brand-500 mb-4">$1,500</p>
+                    <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-brand-500 mb-3 sm:mb-4">$1,500</p>
                     <div class="level-benefits-wrap">
                         <ul class="level-benefits-list list-disc list-inside text-neutral-400 text-sm space-y-1.5">
                             <li>Sponsor Social at JW Marriott (9/24)</li>
@@ -306,8 +303,8 @@
                     <div class="aspect-square w-full flex-shrink-0">
                         <img src="https://jhm-cms.images.sardius.media/media/hfrfk5nu/v2-warriorblue.jpg?fit=cover&width=400&height=400" alt="Team spirit" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex flex-col flex-1 min-h-0">
-                    <p class="text-4xl font-display font-medium text-brand-500 mb-4">$2,500</p>
+                    <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-brand-500 mb-3 sm:mb-4">$2,500</p>
                     <div class="level-benefits-wrap">
                         <ul class="level-benefits-list list-disc list-inside text-neutral-400 text-sm space-y-1.5">
                             <li>Banner featuring company logo at Baseball or Softball Stadium</li>
@@ -330,8 +327,8 @@
                     <div class="aspect-square w-full flex-shrink-0 overflow-hidden rounded-t-2xl">
                         <img src="https://jhm-cms.images.sardius.media/media/qbgpoexn/v2-warriorsilver.jpg?fit=cover&width=400&height=400" alt="Stadium" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex flex-col flex-1 min-h-0">
-                    <p class="text-4xl font-display font-medium text-brand-500 mb-4">$5,000</p>
+                    <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-brand-500 mb-3 sm:mb-4">$5,000</p>
                     <div class="level-benefits-wrap">
                         <ul class="level-benefits-list list-disc list-inside text-neutral-400 text-sm space-y-1.5">
                             <li>Banner featuring company logo at Warrior Stadium, and your choice of CCS Baseball or Softball Field</li>
@@ -354,8 +351,8 @@
                     <div class="aspect-square w-full flex-shrink-0">
                         <img src="https://jhm-cms.images.sardius.media/media/ckufxfwb/v2-warriorgold.jpg?fit=cover&width=400&height=400" alt="Champions" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex flex-col flex-1 min-h-0">
-                    <p class="text-4xl font-display font-medium text-brand-500 mb-4">$8,000</p>
+                    <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-brand-500 mb-3 sm:mb-4">$8,000</p>
                     <div class="level-benefits-wrap">
                         <ul class="level-benefits-list list-disc list-inside text-neutral-400 text-sm space-y-1.5">
                             <li>Company announced and logo displayed pregame/postgame on CCS Video scoreboard in Warrior Stadium during football season</li>
@@ -377,8 +374,8 @@
                     <div class="aspect-square w-full flex-shrink-0">
                         <img src="https://jhm-cms.images.sardius.media/media/djmduehg/v2-warriorplatinum.jpg?fit=cover&width=400&height=400" alt="Excellence" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex flex-col flex-1 min-h-0">
-                    <p class="text-4xl font-display font-medium text-brand-500 mb-4">$15,000</p>
+                    <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-brand-500 mb-3 sm:mb-4">$15,000</p>
                     <div class="level-benefits-wrap">
                         <ul class="level-benefits-list list-disc list-inside text-neutral-400 text-sm space-y-1.5">
                             <li>Company announced and logo displayed pregame/postgame and after each quarter on CCS Video scoreboard in Warrior Stadium during football season</li>
@@ -402,8 +399,8 @@
                     <div class="aspect-square w-full flex-shrink-0">
                         <img src="https://jhm-cms.images.sardius.media/media/vxbdqd4l/v2-warriorsponsor.jpg?fit=cover&width=400&height=400" alt="Victory" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex flex-col flex-1 min-h-0">
-                    <p class="text-4xl font-display font-medium text-brand-500 mb-4">$30,000</p>
+                    <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-brand-500 mb-3 sm:mb-4">$30,000</p>
                     <div class="level-benefits-wrap">
                         <ul class="level-benefits-list list-disc list-inside text-neutral-400 text-sm space-y-1.5">
                             <li>Primary Scoreboard Sponsor (CCS Warrior Stadium) (CCS Baseball &amp; Softball Fields)</li>
@@ -429,13 +426,13 @@
     </section>
 
     <!-- Impact Section -->
-    <section class="py-24 relative overflow-hidden" id="impact">
-        <div class="max-w-[1600px] mx-auto px-6">
-            <div class="mb-12">
-                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">See Where Your Support Goes</h2>
-                <p class="text-xl text-neutral-400 max-w-2xl">Real programs. Real results. Real impact on Warriors.</p>
+    <section class="py-12 sm:py-16 lg:py-24 relative overflow-hidden" id="impact">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">See Where Your Support Goes</h2>
+                <p class="text-base sm:text-xl text-neutral-400 max-w-2xl">Real programs. Real results. Real impact on Warriors.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
                 <div class="bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden group hover:border-brand-600/50 transition-colors">
                     <div class="h-56 bg-neutral-800 overflow-hidden">
                         <img src="https://ik.imagekit.io/primo/CCS/ccsfootball.jpg" alt="State Championships" class="w-full h-full object-cover">
@@ -471,13 +468,13 @@
     </section>
 
     <!-- Business Sponsorship -->
-    <section class="py-24 bg-neutral-900 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-12">
-                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Corporate Champions: Partner With Purpose</h2>
-                <p class="text-xl text-neutral-400 max-w-2xl">Align your brand with excellence while supporting the next generation of leaders.</p>
+    <section class="py-12 sm:py-16 lg:py-24 bg-neutral-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Corporate Champions: Partner With Purpose</h2>
+                <p class="text-base sm:text-xl text-neutral-400 max-w-2xl">Align your brand with excellence while supporting the next generation of leaders.</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
                 <div>
                     <h3 class="text-xl text-white font-display uppercase mb-6">Sponsorship Benefits</h3>
                     <ul class="space-y-4 text-neutral-300">
@@ -488,14 +485,15 @@
                         <li class="flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span> Tax-deductible contribution</li>
                     </ul>
                 </div>
-                <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-8">
-                    <h3 class="text-xl text-white font-display uppercase mb-6">Sponsorship Levels</h3>
+                <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-6 sm:p-8">
+                    <h3 class="text-lg sm:text-xl text-white font-display uppercase mb-4 sm:mb-6">Sponsorship Levels</h3>
                     <div class="space-y-4">
-                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Platinum – $10,000+</strong><p class="text-neutral-500 text-sm mt-1">Premier visibility, naming rights opportunities</p></div>
-                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Gold – $5,000–$9,999</strong><p class="text-neutral-500 text-sm mt-1">Major event sponsorships, premium placement</p></div>
-                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Silver – $2,500–$4,999</strong><p class="text-neutral-500 text-sm mt-1">Season sponsorships, prominent recognition</p></div>
-                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Blue – $1,000–$2,499</strong><p class="text-neutral-500 text-sm mt-1">Program support, standard recognition</p></div>
-                        <div><strong class="text-white">Red – $500–$999</strong><p class="text-neutral-500 text-sm mt-1">Foundational support, basic recognition</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Title Sponsor – $30,000</strong><p class="text-neutral-500 text-sm mt-1">Primary scoreboard sponsor, full visibility across stadium, baseball &amp; softball</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Platinum – $15,000</strong><p class="text-neutral-500 text-sm mt-1">Scoreboard &amp; venue logos, VIP corporate seating, free admission to all events</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Gold – $8,000</strong><p class="text-neutral-500 text-sm mt-1">Logo at stadium, baseball, softball &amp; gym; 2 VIP parking; sponsor socials</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Silver – $5,000</strong><p class="text-neutral-500 text-sm mt-1">Stadium + baseball or softball banner; scoreboard; website; VIP parking &amp; seating</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Blue – $2,500</strong><p class="text-neutral-500 text-sm mt-1">Banner at baseball/softball; A-Frame on Warrior Way; scoreboard; VIP parking &amp; seating</p></div>
+                        <div><strong class="text-white">Red – $1,500</strong><p class="text-neutral-500 text-sm mt-1">Sponsor socials; gameday media guide logo; 1 VIP parking &amp; seating</p></div>
                     </div>
                 </div>
             </div>
@@ -506,11 +504,11 @@
     </section>
 
     <!-- Sponsor Logos -->
-    <section class="py-24 relative" id="sponsors">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-12">
-                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Thank You to Our Warrior Partners</h2>
-                <p class="text-xl text-neutral-400">Join 100+ businesses supporting Cornerstone Christian Schools</p>
+    <section class="py-12 sm:py-16 lg:py-24 relative" id="sponsors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Thank You to Our Warrior Partners</h2>
+                <p class="text-base sm:text-xl text-neutral-400">Join 100+ businesses supporting Cornerstone Christian Schools</p>
             </div>
             <h3 class="text-lg text-neutral-400 font-display uppercase mb-4">Platinum Sponsors</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
@@ -543,12 +541,12 @@
     </section>
 
     <!-- Alumni -->
-    <section class="py-24 bg-neutral-900 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="bg-neutral-950 rounded-3xl border border-neutral-800 p-12 text-center">
-                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Once a Warrior, Always a Warrior</h2>
-                <p class="text-xl text-neutral-400 max-w-2xl mx-auto mb-8">Graduated? Your impact doesn't have to. Alumni memberships help current students access the same opportunities that shaped you.</p>
-                <div class="inline-block p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 mb-8">
+    <section class="py-12 sm:py-16 lg:py-24 bg-neutral-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="bg-neutral-950 rounded-3xl border border-neutral-800 p-6 sm:p-8 md:p-12 text-center">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Once a Warrior, Always a Warrior</h2>
+                <p class="text-base sm:text-xl text-neutral-400 max-w-2xl mx-auto mb-6 sm:mb-8">Graduated? Your impact doesn't have to. Alumni memberships help current students access the same opportunities that shaped you.</p>
+                <div class="inline-block p-4 sm:p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 mb-6 sm:mb-8 w-full max-w-lg">
                     <h3 class="text-2xl font-display text-white mb-6">Alumni Special Tier – $100/year</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-neutral-300 text-sm">
                         <div><span class="block text-2xl mb-2">🎓</span> Alumni-exclusive merchandise</div>
@@ -563,29 +561,29 @@
     </section>
 
     <!-- FAQ -->
-    <section class="py-24 max-w-4xl mx-auto px-6" id="faq">
-        <div class="mb-12">
-            <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Common Questions</h2>
-            <p class="text-xl text-neutral-400">Everything you need to know about Sword &amp; Shield membership</p>
+    <section class="py-12 sm:py-16 lg:py-24 max-w-4xl mx-auto px-4 sm:px-6" id="faq">
+        <div class="mb-8 sm:mb-12">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Common Questions</h2>
+            <p class="text-base sm:text-xl text-neutral-400">Everything you need to know about Sword &amp; Shield membership</p>
         </div>
-        <div class="space-y-4">
-            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+        <div class="space-y-3 sm:space-y-4">
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 sm:p-6">
                 <h4 class="font-medium text-white mb-2">Is my membership tax-deductible?</h4>
                 <p class="text-neutral-400 text-sm leading-relaxed">Yes! Cornerstone Christian Schools is a 501(c)(3) nonprofit. You'll receive a receipt for tax purposes.</p>
             </div>
-            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 sm:p-6">
                 <h4 class="font-medium text-white mb-2">Can I designate my donation to a specific program?</h4>
                 <p class="text-neutral-400 text-sm leading-relaxed">While Sword &amp; Shield supports all programs holistically, you can express preferences. Contact us to discuss.</p>
             </div>
-            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 sm:p-6">
                 <h4 class="font-medium text-white mb-2">What's the difference between family membership and business sponsorship?</h4>
                 <p class="text-neutral-400 text-sm leading-relaxed">Family memberships are individual/family contributions. Business sponsorships include marketing benefits and brand visibility.</p>
             </div>
-            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 sm:p-6">
                 <h4 class="font-medium text-white mb-2">When does my membership expire?</h4>
                 <p class="text-neutral-400 text-sm leading-relaxed">All memberships run on the academic year (August–July). You'll receive a renewal reminder.</p>
             </div>
-            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 sm:p-6">
                 <h4 class="font-medium text-white mb-2">Can I pay in installments?</h4>
                 <p class="text-neutral-400 text-sm leading-relaxed">Yes! We offer quarterly payment plans. Contact us to arrange.</p>
             </div>
@@ -593,36 +591,36 @@
     </section>
 
     <!-- Footer CTA -->
-    <section class="py-24 bg-neutral-950 border-y border-neutral-800">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Ready to Fuel Warrior Excellence?</h2>
-            <p class="text-xl text-neutral-400 mb-10">Your support today creates tomorrow's champions.</p>
-            <div class="flex flex-wrap gap-4 justify-center mb-12">
-                <button class="h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-lg transition-all">Join as Family Member →</button>
-                <button class="h-14 px-8 rounded-xl border-2 border-white/30 hover:bg-white/10 text-white font-medium text-lg transition-all">Sponsor as Business →</button>
+    <section class="py-12 sm:py-16 lg:py-24 bg-neutral-950 border-y border-neutral-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Ready to Fuel Warrior Excellence?</h2>
+            <p class="text-base sm:text-xl text-neutral-400 mb-8 sm:mb-10">Your support today creates tomorrow's champions.</p>
+            <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mb-10 sm:mb-12">
+                <button class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-base sm:text-lg transition-all">Join as Family Member →</button>
+                <button class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl border-2 border-white/30 hover:bg-white/10 text-white font-medium text-base sm:text-lg transition-all">Sponsor as Business →</button>
             </div>
-            <div class="bg-neutral-900/50 rounded-2xl border border-neutral-800 p-8 max-w-2xl mx-auto flex flex-col sm:flex-row items-center gap-8">
-                <div class="flex-shrink-0 w-52 h-52 sm:w-64 sm:h-64 rounded-2xl overflow-hidden bg-neutral-800 border border-neutral-700">
+            <div class="bg-neutral-900/50 rounded-2xl border border-neutral-800 p-6 sm:p-8 max-w-2xl mx-auto flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                <div class="flex-shrink-0 w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden bg-neutral-800 border border-neutral-700">
                     <img src="https://jhm-cms.images.sardius.media/media/yxujwlen/charlesgann2025-800x800.jpg?fit=cover&width=800&height=800" alt="Charles Gann, Director of Sword &amp; Shield" class="w-full h-full object-cover">
                 </div>
-                <div class="text-center sm:text-left">
-                    <h3 class="text-xl font-display text-white mb-4">Contact Director of Sword &amp; Shield</h3>
+                <div class="text-center sm:text-left min-w-0">
+                    <h3 class="text-lg sm:text-xl font-display text-white mb-3 sm:mb-4">Contact Director of Sword &amp; Shield</h3>
                     <p class="text-white font-medium">Charles Gann</p>
-                    <p class="text-neutral-400 text-sm mt-1"><a href="mailto:Charles.Gann@sa-ccs.org" class="text-brand-500 hover:text-brand-400">Charles.Gann@sa-ccs.org</a></p>
-                    <p class="text-neutral-400 text-sm mt-1">Office: 210-979-9203 | Cell: 432-556-3019</p>
+                    <p class="text-neutral-400 text-sm mt-1 break-all"><a href="mailto:Charles.Gann@sa-ccs.org" class="text-brand-500 hover:text-brand-400">Charles.Gann@sa-ccs.org</a></p>
+                    <p class="text-neutral-400 text-sm mt-1">Office: 210-979-9203</p>
+                    <p class="text-neutral-400 text-sm mt-0.5">Cell: 432-556-3019</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black pt-20 pb-10 border-t border-neutral-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <footer class="bg-black pt-12 sm:pt-16 lg:pt-20 pb-10 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-2 mb-6">
-                        <i data-lucide="shield" class="w-8 h-8 text-white fill-white"></i>
-                        <span class="font-display font-medium text-2xl tracking-tight uppercase">Sword &amp; Shield</span>
+                        <img src="https://ik.imagekit.io/primo/CCS/swordandshield.png" alt="Sword &amp; Shield" class="h-10 w-auto">
                     </div>
                     <p class="text-neutral-500 max-w-sm mb-6">
                         Cornerstone Christian Schools' unified support program. Your membership empowers Warriors across athletics, academics, fine arts, and spiritual life.
@@ -654,14 +652,39 @@
                 </div>
             </div>
 
-            <div class="border-t border-neutral-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-neutral-600 text-sm">
-                <p>© 2025 Sword &amp; Shield – Cornerstone Christian Schools. All rights reserved.</p>
+            <div class="border-t border-neutral-900 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-neutral-600 text-xs sm:text-sm text-center md:text-left">
+                <p class="break-words">© 2025 Sword &amp; Shield – Cornerstone Christian Schools. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+
+        (function() {
+            var btn = document.getElementById('mobile-menu-btn');
+            var menu = document.getElementById('mobile-menu');
+            var menuIcon = document.getElementById('menu-icon');
+            var closeIcon = document.getElementById('close-icon');
+            if (btn && menu && menuIcon && closeIcon) {
+                btn.addEventListener('click', function() {
+                    var open = !menu.classList.contains('hidden');
+                    menu.classList.toggle('hidden', open);
+                    menuIcon.classList.toggle('hidden', !open);
+                    closeIcon.classList.toggle('hidden', open);
+                    btn.setAttribute('aria-expanded', !open);
+                    btn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+                });
+                menu.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        menu.classList.add('hidden');
+                        menuIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        })();
 
         (function() {
             var duration = 2000;
