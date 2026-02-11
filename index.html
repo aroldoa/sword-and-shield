@@ -1,0 +1,538 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sword &amp; Shield | Cornerstone Christian Schools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Oswald:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Oswald', sans-serif; }
+        .glass {
+            background: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+        .clip-slant {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e',
+                            600: '#e11d48', // Main red
+                            700: '#be123c',
+                            900: '#881337',
+                            950: '#0a0a0a', // Dark background
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-950 text-white antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 glass border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shield" class="w-8 h-8 text-brand-600 fill-brand-600/20"></i>
+                <span class="font-display font-medium text-2xl tracking-tight uppercase">Sword &amp; Shield</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#membership" class="text-neutral-300 hover:text-white text-lg transition-colors">Membership</a>
+                <a href="#impact" class="text-neutral-300 hover:text-white text-lg transition-colors">Impact</a>
+                <a href="#sponsors" class="text-neutral-300 hover:text-white text-lg transition-colors">Sponsors</a>
+                <a href="#faq" class="text-neutral-300 hover:text-white text-lg transition-colors">FAQ</a>
+            </div>
+
+            <button class="hidden md:flex group relative px-6 py-3 rounded-lg overflow-hidden bg-white text-brand-950 font-medium transition-all hover:bg-neutral-200">
+                <span class="relative z-10 flex items-center gap-2">
+                    Join Sword &amp; Shield <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                </span>
+            </button>
+            
+            <button class="md:hidden text-white">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Video Background -->
+        <div class="absolute inset-0 z-0">
+            <video autoplay="" loop="" muted="" playsinline="" class="w-full h-full object-cover opacity-40">
+                <!-- Athletics/school placeholder -->
+                <source src="https://videos.pexels.com/video-files/5965429/5965429-uhd_2560_1440_30fps.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-950/80 via-brand-950/40 to-brand-950"></div>
+            <!-- Red Glow Effects -->
+            <div class="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-brand-600/30 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-900/20 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center mt-10">
+            
+            <!-- Hero Text -->
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-400">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    <span class="text-sm font-medium tracking-wide uppercase">Supporting Warriors</span>
+                </div>
+
+                <h1 class="text-6xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter">
+                    Power <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-white">Excellence.</span> <br>
+                    Fuel Champions.
+                </h1>
+
+                <p class="text-xl text-neutral-300 max-w-lg leading-relaxed">
+                    Your Sword &amp; Shield membership empowers Warriors across athletics, academics, fine arts, and spiritual development.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button class="h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-lg transition-all shadow-[0_0_40px_-10px_rgba(225,29,72,0.5)] flex items-center gap-3">
+                        Join Sword &amp; Shield <i data-lucide="shield" class="w-5 h-5"></i>
+                    </button>
+                    <button class="h-14 px-8 rounded-xl border-2 border-white/50 hover:bg-white/10 text-white font-medium text-lg transition-all flex items-center gap-3">
+                        Become a Business Sponsor
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl pt-8">
+                    <div class="glass rounded-xl p-4 text-center">
+                        <span class="block text-2xl md:text-3xl font-display font-medium text-white">500+</span>
+                        <span class="text-xs md:text-sm text-neutral-400">Student Athletes Supported</span>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center">
+                        <span class="block text-2xl md:text-3xl font-display font-medium text-white">4</span>
+                        <span class="text-xs md:text-sm text-neutral-400">Championship Programs</span>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center">
+                        <span class="block text-2xl md:text-3xl font-display font-medium text-white">$XXX,XXX</span>
+                        <span class="text-xs md:text-sm text-neutral-400">Raised This Year</span>
+                    </div>
+                    <div class="glass rounded-xl p-4 text-center">
+                        <span class="block text-2xl md:text-3xl font-display font-medium text-white">100+</span>
+                        <span class="text-xs md:text-sm text-neutral-400">Business Partners</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Dynamic Card (Reference Style) -->
+            <div class="relative hidden lg:block">
+                <!-- Decorative Elements behind -->
+                <div class="absolute top-10 right-10 w-full h-full border-2 border-brand-600/20 rounded-3xl translate-x-4 translate-y-4"></div>
+                
+                <!-- Main Card -->
+                <div class="relative bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&amp;w=2090&amp;auto=format&amp;fit=crop" alt="Warriors" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent"></div>
+                        <div class="absolute bottom-4 left-6 right-6">
+                            <span class="block text-brand-500 font-display uppercase tracking-widest text-sm mb-1">Cornerstone Christian Schools</span>
+                            <h3 class="text-3xl font-medium tracking-tight">One Membership. Total Impact.</h3>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
+                                <i data-lucide="trophy" class="w-5 h-5 text-brand-500"></i>
+                                <span class="text-sm font-medium">Athletics</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
+                                <i data-lucide="music" class="w-5 h-5 text-brand-500"></i>
+                                <span class="text-sm font-medium">Fine Arts</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
+                                <i data-lucide="book-open" class="w-5 h-5 text-brand-500"></i>
+                                <span class="text-sm font-medium">Academics</span>
+                            </div>
+                            <div class="p-3 rounded-xl bg-neutral-800/50 border border-neutral-700 flex items-center gap-2">
+                                <i data-lucide="heart" class="w-5 h-5 text-brand-500"></i>
+                                <span class="text-sm font-medium">Spiritual Life</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-neutral-500 text-center">Every membership dollar goes directly to student programs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="py-24 relative overflow-hidden" id="membership">
+        <div class="absolute right-0 top-1/4 w-1/2 h-1/2 bg-gradient-to-b from-brand-900/10 to-transparent blur-[100px]"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16">
+                <h2 class="text-5xl md:text-7xl font-medium uppercase tracking-tighter leading-none mb-4">
+                    One Membership. <br> <span class="text-brand-600">Total Impact.</span>
+                </h2>
+                <p class="text-xl text-neutral-400 max-w-2xl">Sword &amp; Shield is Cornerstone Christian Schools' unified support program that funds excellence across all student activities. Your membership directly supports:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-neutral-900 rounded-3xl border border-neutral-800 p-8 text-center hover:border-brand-600/50 transition-colors group">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-600/20 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-600/30 transition-colors">
+                        <i data-lucide="trophy" class="w-8 h-8 text-brand-500"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white uppercase tracking-tight mb-3">Athletics</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Train Warriors to compete with Kingdom perspective</p>
+                </div>
+                <div class="bg-neutral-900 rounded-3xl border border-neutral-800 p-8 text-center hover:border-brand-600/50 transition-colors group">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-600/20 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-600/30 transition-colors">
+                        <i data-lucide="music" class="w-8 h-8 text-brand-500"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white uppercase tracking-tight mb-3">Fine Arts</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Award-winning theater, music, and visual arts</p>
+                </div>
+                <div class="bg-neutral-900 rounded-3xl border border-neutral-800 p-8 text-center hover:border-brand-600/50 transition-colors group">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-600/20 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-600/30 transition-colors">
+                        <i data-lucide="book-open" class="w-8 h-8 text-brand-500"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white uppercase tracking-tight mb-3">Academics</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">STEM, robotics, and 4-H programs</p>
+                </div>
+                <div class="bg-neutral-900 rounded-3xl border border-neutral-800 p-8 text-center hover:border-brand-600/50 transition-colors group">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-600/20 flex items-center justify-center mx-auto mb-6 group-hover:bg-brand-600/30 transition-colors">
+                        <i data-lucide="heart" class="w-8 h-8 text-brand-500"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white uppercase tracking-tight mb-3">Spiritual Life</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Character development and discipleship</p>
+                </div>
+            </div>
+            <div class="mt-10 p-6 rounded-2xl bg-brand-900/20 border-l-4 border-brand-600 border border-neutral-800">
+                <p class="text-lg text-neutral-200"><span class="text-brand-500 font-medium">Every membership dollar</span> goes directly to student programs, equipment, and opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Tiers -->
+    <section class="py-24 bg-neutral-900 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Choose Your Impact Level</h2>
+                <p class="text-xl text-neutral-400 max-w-2xl">Select the membership tier that fits your family and see the direct impact on our Warriors.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Red -->
+                <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-6 flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-red-600/80 mb-4"></div>
+                    <h3 class="font-display text-lg text-white uppercase mb-1">Warrior Supporter</h3>
+                    <p class="text-2xl font-display font-medium text-brand-500 mb-4">$150<span class="text-sm text-neutral-500 font-sans font-normal">/year</span></p>
+                    <ul class="text-neutral-400 text-sm space-y-2 mb-6 flex-1">
+                        <li>Sword &amp; Shield decal</li>
+                        <li>Website recognition</li>
+                        <li>Exclusive updates</li>
+                        <li>Discounted tickets</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-neutral-800 hover:bg-brand-600 text-white font-medium transition-colors">Select Red Level</button>
+                </div>
+                <!-- Blue (featured) -->
+                <div class="bg-neutral-950 rounded-2xl border-2 border-brand-600 p-6 flex flex-col relative shadow-[0_0_40px_-10px_rgba(225,29,72,0.3)] scale-105 z-10">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-600 text-white text-xs font-bold uppercase">Most Popular</span>
+                    <div class="w-12 h-12 rounded-full bg-blue-600 mb-4"></div>
+                    <h3 class="font-display text-lg text-white uppercase mb-1">Warrior Builder</h3>
+                    <p class="text-2xl font-display font-medium text-brand-500 mb-4">$500<span class="text-sm text-neutral-500 font-sans font-normal">/year</span></p>
+                    <ul class="text-neutral-400 text-sm space-y-2 mb-6 flex-1">
+                        <li>All Red benefits</li>
+                        <li>S&amp;S t-shirt</li>
+                        <li>VIP parking</li>
+                        <li>Event recognition</li>
+                        <li>Donor events</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium transition-colors">Select Blue Level</button>
+                </div>
+                <!-- Silver -->
+                <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-6 flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-neutral-400 mb-4"></div>
+                    <h3 class="font-display text-lg text-white uppercase mb-1">Warrior Champion</h3>
+                    <p class="text-2xl font-display font-medium text-brand-500 mb-4">$1,000<span class="text-sm text-neutral-500 font-sans font-normal">/year</span></p>
+                    <ul class="text-neutral-400 text-sm space-y-2 mb-6 flex-1">
+                        <li>All Blue benefits</li>
+                        <li>Premium seating</li>
+                        <li>Donor wall name</li>
+                        <li>Program tours</li>
+                        <li>Student thank-you</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-neutral-800 hover:bg-brand-600 text-white font-medium transition-colors">Select Silver Level</button>
+                </div>
+                <!-- Gold -->
+                <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-6 flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-amber-400 mb-4"></div>
+                    <h3 class="font-display text-lg text-white uppercase mb-1">Warrior Leader</h3>
+                    <p class="text-2xl font-display font-medium text-brand-500 mb-4">$2,500<span class="text-sm text-neutral-500 font-sans font-normal">/year</span></p>
+                    <ul class="text-neutral-400 text-sm space-y-2 mb-6 flex-1">
+                        <li>All Silver benefits</li>
+                        <li>Gold plaque</li>
+                        <li>Sideline access</li>
+                        <li>Director meetings</li>
+                        <li>Reserved parking</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-neutral-800 hover:bg-brand-600 text-white font-medium transition-colors">Select Gold Level</button>
+                </div>
+                <!-- Platinum -->
+                <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-6 flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-neutral-300 to-neutral-500 mb-4"></div>
+                    <h3 class="font-display text-lg text-white uppercase mb-1">Warrior Elite</h3>
+                    <p class="text-2xl font-display font-medium text-brand-500 mb-4">$5,000+<span class="text-sm text-neutral-500 font-sans font-normal">/year</span></p>
+                    <ul class="text-neutral-400 text-sm space-y-2 mb-6 flex-1">
+                        <li>All Gold benefits</li>
+                        <li>Coach meet &amp; greet</li>
+                        <li>Custom recognition</li>
+                        <li>Season passes (2)</li>
+                        <li>Executive briefings</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-neutral-800 hover:bg-brand-600 text-white font-medium transition-colors">Select Platinum Level</button>
+                </div>
+            </div>
+            <p class="text-center text-neutral-500 mt-8">Not sure which level? <a href="mailto:Charles.Gann@sa-ccs.org" class="text-brand-500 font-medium hover:text-brand-400">Contact Charles Gann</a> to discuss custom options.</p>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="py-24 relative overflow-hidden" id="impact">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">See Where Your Support Goes</h2>
+                <p class="text-xl text-neutral-400 max-w-2xl">Real programs. Real results. Real impact on Warriors.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden group hover:border-brand-600/50 transition-colors">
+                    <div class="h-56 bg-neutral-800 flex items-center justify-center text-neutral-500 text-sm">[Victory Celebration Photo]</div>
+                    <div class="p-6">
+                        <p class="text-3xl font-display font-medium text-brand-500 mb-2">4 State Titles</p>
+                        <h3 class="text-white font-display uppercase tracking-tight mb-3">State Championships</h3>
+                        <p class="text-neutral-400 text-sm italic">"Sword &amp; Shield funding upgraded our strength training facility, giving our athletes a competitive edge."</p>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden group hover:border-brand-600/50 transition-colors">
+                    <div class="h-56 bg-neutral-800 flex items-center justify-center text-neutral-500 text-sm">[Theater Production Photo]</div>
+                    <div class="p-6">
+                        <p class="text-3xl font-display font-medium text-brand-500 mb-2">#1 UIL Rating</p>
+                        <h3 class="text-white font-display uppercase tracking-tight mb-3">Fine Arts Excellence</h3>
+                        <p class="text-neutral-400 text-sm italic">"New lighting and sound equipment made possible by member support elevated our productions to award-winning status."</p>
+                    </div>
+                </div>
+                <div class="bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden group hover:border-brand-600/50 transition-colors">
+                    <div class="h-56 bg-neutral-800 flex items-center justify-center text-neutral-500 text-sm">[Robotics Lab Photo]</div>
+                    <div class="p-6">
+                        <p class="text-3xl font-display font-medium text-brand-500 mb-2">Regional Champs</p>
+                        <h3 class="text-white font-display uppercase tracking-tight mb-3">Academic Innovation</h3>
+                        <p class="text-neutral-400 text-sm italic">"Member funding launched our 4-H and robotics programs, opening new opportunities for student growth."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Sponsorship -->
+    <section class="py-24 bg-neutral-900 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Corporate Champions: Partner With Purpose</h2>
+                <p class="text-xl text-neutral-400 max-w-2xl">Align your brand with excellence while supporting the next generation of leaders.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl text-white font-display uppercase mb-6">Sponsorship Benefits</h3>
+                    <ul class="space-y-4 text-neutral-300">
+                        <li class="flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span> Logo placement across campus and events</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span> Digital marketing exposure (website, social, email)</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span> Community goodwill and brand recognition</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span> Networking opportunities with 600+ families</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-500 font-bold">✓</span> Tax-deductible contribution</li>
+                    </ul>
+                </div>
+                <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-8">
+                    <h3 class="text-xl text-white font-display uppercase mb-6">Sponsorship Levels</h3>
+                    <div class="space-y-4">
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Platinum – $10,000+</strong><p class="text-neutral-500 text-sm mt-1">Premier visibility, naming rights opportunities</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Gold – $5,000–$9,999</strong><p class="text-neutral-500 text-sm mt-1">Major event sponsorships, premium placement</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Silver – $2,500–$4,999</strong><p class="text-neutral-500 text-sm mt-1">Season sponsorships, prominent recognition</p></div>
+                        <div class="pb-4 border-b border-neutral-800"><strong class="text-white">Blue – $1,000–$2,499</strong><p class="text-neutral-500 text-sm mt-1">Program support, standard recognition</p></div>
+                        <div><strong class="text-white">Red – $500–$999</strong><p class="text-neutral-500 text-sm mt-1">Foundational support, basic recognition</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-lg transition-all inline-flex items-center gap-2">View Full Sponsorship Package <i data-lucide="arrow-right" class="w-5 h-5"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsor Logos -->
+    <section class="py-24 relative" id="sponsors">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Thank You to Our Warrior Partners</h2>
+                <p class="text-xl text-neutral-400">Join 100+ businesses supporting Cornerstone Christian Schools</p>
+            </div>
+            <h3 class="text-lg text-neutral-400 font-display uppercase mb-4">Platinum Sponsors</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Sirotiak Family</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Moul Family</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Circle S</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">CKC Custom Homes</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">I AM Trucking</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Las Palapas</div>
+            </div>
+            <h3 class="text-lg text-neutral-400 font-display uppercase mb-4">Gold &amp; Silver Sponsors</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Clark Construction</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Agua Fresca</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">DTK Facility</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Aguilar Insurance</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Aramark</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Encore Jet</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Texas First Rental</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">RFT Logistics</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Frost Bank</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">EPJ Custom</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">Christy's Closet</div>
+                <div class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-500 text-sm text-center px-2">CJI Piping</div>
+            </div>
+            <div class="text-center">
+                <button class="h-14 px-8 rounded-xl border-2 border-white/30 hover:bg-white/10 text-white font-medium transition-all">Become a Sponsor →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alumni -->
+    <section class="py-24 bg-neutral-900 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-neutral-950 rounded-3xl border border-neutral-800 p-12 text-center">
+                <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Once a Warrior, Always a Warrior</h2>
+                <p class="text-xl text-neutral-400 max-w-2xl mx-auto mb-8">Graduated? Your impact doesn't have to. Alumni memberships help current students access the same opportunities that shaped you.</p>
+                <div class="inline-block p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 mb-8">
+                    <h3 class="text-2xl font-display text-white mb-6">Alumni Special Tier – $100/year</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-neutral-300 text-sm">
+                        <div><span class="block text-2xl mb-2">🎓</span> Alumni-exclusive merchandise</div>
+                        <div><span class="block text-2xl mb-2">🤝</span> Alumni network events</div>
+                        <div><span class="block text-2xl mb-2">📚</span> Mentorship program</div>
+                        <div><span class="block text-2xl mb-2">⭐</span> Legacy recognition</div>
+                    </div>
+                    <button class="mt-6 h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-lg transition-all">Join as Alumni →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 max-w-4xl mx-auto px-6" id="faq">
+        <div class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Common Questions</h2>
+            <p class="text-xl text-neutral-400">Everything you need to know about Sword &amp; Shield membership</p>
+        </div>
+        <div class="space-y-4">
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+                <h4 class="font-medium text-white mb-2">Is my membership tax-deductible?</h4>
+                <p class="text-neutral-400 text-sm leading-relaxed">Yes! Cornerstone Christian Schools is a 501(c)(3) nonprofit. You'll receive a receipt for tax purposes.</p>
+            </div>
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+                <h4 class="font-medium text-white mb-2">Can I designate my donation to a specific program?</h4>
+                <p class="text-neutral-400 text-sm leading-relaxed">While Sword &amp; Shield supports all programs holistically, you can express preferences. Contact us to discuss.</p>
+            </div>
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+                <h4 class="font-medium text-white mb-2">What's the difference between family membership and business sponsorship?</h4>
+                <p class="text-neutral-400 text-sm leading-relaxed">Family memberships are individual/family contributions. Business sponsorships include marketing benefits and brand visibility.</p>
+            </div>
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+                <h4 class="font-medium text-white mb-2">When does my membership expire?</h4>
+                <p class="text-neutral-400 text-sm leading-relaxed">All memberships run on the academic year (August–July). You'll receive a renewal reminder.</p>
+            </div>
+            <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-6">
+                <h4 class="font-medium text-white mb-2">Can I pay in installments?</h4>
+                <p class="text-neutral-400 text-sm leading-relaxed">Yes! We offer quarterly payment plans. Contact us to arrange.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="py-24 bg-neutral-950 border-y border-neutral-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-4">Ready to Fuel Warrior Excellence?</h2>
+            <p class="text-xl text-neutral-400 mb-10">Your support today creates tomorrow's champions.</p>
+            <div class="flex flex-wrap gap-4 justify-center mb-12">
+                <button class="h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-lg transition-all">Join as Family Member →</button>
+                <button class="h-14 px-8 rounded-xl border-2 border-white/30 hover:bg-white/10 text-white font-medium text-lg transition-all">Sponsor as Business →</button>
+            </div>
+            <div class="bg-neutral-900/50 rounded-2xl border border-neutral-800 p-8 max-w-lg mx-auto">
+                <h3 class="text-xl font-display text-white mb-4">Contact Director of Sword &amp; Shield</h3>
+                <p class="text-white font-medium">Charles Gann</p>
+                <p class="text-neutral-400 text-sm mt-1"><a href="mailto:Charles.Gann@sa-ccs.org" class="text-brand-500 hover:text-brand-400">Charles.Gann@sa-ccs.org</a></p>
+                <p class="text-neutral-400 text-sm mt-1">Office: 210-979-9203 | Cell: 432-556-3019</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-20 pb-10 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="shield" class="w-8 h-8 text-white fill-white"></i>
+                        <span class="font-display font-medium text-2xl tracking-tight uppercase">Sword &amp; Shield</span>
+                    </div>
+                    <p class="text-neutral-500 max-w-sm mb-6">
+                        Cornerstone Christian Schools' unified support program. Your membership empowers Warriors across athletics, academics, fine arts, and spiritual life.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-white hover:bg-brand-600 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-white hover:bg-brand-600 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-white hover:bg-brand-600 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium mb-6">Get Involved</h4>
+                    <ul class="space-y-4 text-neutral-500">
+                        <li><a href="#membership" class="hover:text-brand-500 transition-colors">Membership Tiers</a></li>
+                        <li><a href="#sponsors" class="hover:text-brand-500 transition-colors">Business Sponsors</a></li>
+                        <li><a href="#faq" class="hover:text-brand-500 transition-colors">FAQ</a></li>
+                        <li><a href="mailto:Charles.Gann@sa-ccs.org" class="hover:text-brand-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium mb-6">Support</h4>
+                    <ul class="space-y-4 text-neutral-500">
+                        <li><a href="mailto:Charles.Gann@sa-ccs.org" class="hover:text-brand-500 transition-colors">Contact Charles Gann</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition-colors">Cornerstone Christian Schools</a></li>
+                        <li><a href="#" class="hover:text-brand-500 transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-neutral-600 text-sm">
+                <p>© 2025 Sword &amp; Shield – Cornerstone Christian Schools. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body></html>
