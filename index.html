@@ -210,11 +210,12 @@
                         </div>
                     </div>
                     <div class="p-6 space-y-4">
-                        <form class="space-y-3" action="#" method="post">
+                        <form id="lead-form" class="space-y-3" action="#" method="post">
+                            <div id="lead-form-message" class="hidden text-sm text-center py-2 rounded-xl"></div>
                             <input type="text" name="full_name" placeholder="Your name" required class="w-full px-4 py-2.5 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-brand-500">
                             <input type="tel" name="phone" placeholder="Phone number" class="w-full px-4 py-2.5 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-brand-500">
                             <input type="email" name="email" placeholder="Email address" required class="w-full px-4 py-2.5 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-brand-500">
-                            <button type="submit" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-colors">Make a Difference</button>
+                            <button type="submit" id="lead-form-submit" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-colors">Make a Difference</button>
                         </form>
                         <p class="text-xs text-neutral-500 text-center">Every membership dollar goes directly to student programs.</p>
                     </div>
@@ -684,6 +685,51 @@
                     });
                 });
             }
+        })();
+
+        (function() {
+            var form = document.getElementById('lead-form');
+            var messageEl = document.getElementById('lead-form-message');
+            var submitBtn = document.getElementById('lead-form-submit');
+            if (!form || !messageEl || !submitBtn) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                messageEl.classList.add('hidden');
+                messageEl.classList.remove('text-green-400', 'text-red-400');
+                var fullName = (form.querySelector('[name="full_name"]') || {}).value || '';
+                var email = (form.querySelector('[name="email"]') || {}).value || '';
+                var phone = (form.querySelector('[name="phone"]') || {}).value || '';
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending…';
+
+                fetch('/api/submit-lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ full_name: fullName, email: email, phone: phone || null })
+                })
+                .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, data: data }; }); })
+                .then(function(result) {
+                    if (result.ok) {
+                        messageEl.textContent = result.data.message || 'Thank you! We will be in touch.';
+                        messageEl.classList.add('text-green-400');
+                        form.reset();
+                    } else {
+                        messageEl.textContent = result.data.error || 'Something went wrong. Please try again.';
+                        messageEl.classList.add('text-red-400');
+                    }
+                    messageEl.classList.remove('hidden');
+                })
+                .catch(function() {
+                    messageEl.textContent = 'Unable to send. Please try again or contact us directly.';
+                    messageEl.classList.add('text-red-400');
+                    messageEl.classList.remove('hidden');
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Make a Difference';
+                });
+            });
         })();
 
         (function() {
