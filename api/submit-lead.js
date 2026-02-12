@@ -52,8 +52,13 @@ export default async function handler(req) {
     );
   } catch (err) {
     console.error('Database error:', err);
+    const msg = (err && err.message) ? String(err.message) : '';
+    const tableMissing = /does not exist|relation .* does not exist/i.test(msg);
+    const hint = tableMissing
+      ? 'Database table not set up. Run schema.sql in the Neon SQL Editor (dashboard.neon.tech).'
+      : 'Unable to save. Please try again or contact us directly.';
     return new Response(
-      JSON.stringify({ error: 'Unable to save. Please try again or contact us directly.' }),
+      JSON.stringify({ error: hint }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
