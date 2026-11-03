@@ -1,0 +1,64 @@
+---
+import Icon from './Icon.astro';
+import { CONTACT, IMG, SOCIAL } from '../data/site';
+
+const year = new Date().getFullYear();
+
+const socials = [
+  { href: SOCIAL.instagram, label: 'Instagram', icon: 'instagram' },
+  { href: SOCIAL.facebook, label: 'Facebook', icon: 'facebook' },
+  { href: SOCIAL.x, label: 'X (Twitter)', icon: 'x-brand' },
+] as const;
+
+const link = 'hover:text-brand-500 transition-colors';
+---
+
+<footer class="bg-black pt-12 sm:pt-16 lg:pt-20 pb-10 border-t border-neutral-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
+      <div class="md:col-span-2">
+        <img src={IMG.logo} alt="Sword & Shield" width="759" height="128" loading="lazy" decoding="async" class="h-14 w-auto object-contain max-w-[280px] mb-6" />
+        <p class="text-neutral-400 max-w-sm mb-6">
+          Cornerstone Christian Schools' unified support program. Your membership empowers Warriors across athletics, academics, fine arts, and spiritual life.
+        </p>
+        <div class="flex gap-4">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                aria-label={s.label}
+                class="w-10 h-10 rounded-full bg-neutral-900 flex items-center justify-center text-white hover:bg-brand-600 transition-colors"
+              >
+                <Icon name={s.icon} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-sans text-white font-medium mb-6">Get Involved</h2>
+        <ul class="space-y-4 text-neutral-400">
+          <li><a href="#membership" class={link}>Membership Tiers</a></li>
+          <li><a href="#sponsors" class={link}>Business Sponsors</a></li>
+          <li><a href="#faq" class={link}>FAQ</a></li>
+          <li><a href={`mailto:${CONTACT.email}`} class={link}>Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-sans text-white font-medium mb-6">Support</h2>
+        <ul class="space-y-4 text-neutral-400">
+          <li><a href={`mailto:${CONTACT.email}`} class={link}>Contact {CONTACT.name}</a></li>
+          {/* TODO: real URLs */}
+          <li><a href="#" class={link}>Cornerstone Christian Schools</a></li>
+          <li><a href="#" class={link}>Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-neutral-900 pt-6 sm:pt-8 text-neutral-400 text-xs sm:text-sm text-center md:text-left">
+      <p class="break-words">© {year} Sword &amp; Shield – Cornerstone Christian Schools. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

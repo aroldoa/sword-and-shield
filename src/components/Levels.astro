@@ -1,0 +1,66 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { CONTACT, LEVELS, TICKET_URL, formatUsd } from '../data/site';
+import { img, srcset } from '../lib/img';
+---
+
+<section id="levels" class="py-12 sm:py-16 lg:py-24 bg-neutral-900 relative">
+  <div class="w-full px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      title="Choose Your Impact Level"
+      lede="Select the sponsorship level that fits your business and see the direct impact on our Warriors."
+    />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-4 sm:gap-5">
+      {
+        LEVELS.map((level) => {
+          const highlighted = Boolean(level.badge);
+          return (
+            <article
+              class:list={[
+                'bg-neutral-950 rounded-2xl flex flex-col relative',
+                highlighted
+                  ? 'border-2 border-brand-600 shadow-[0_0_40px_-10px_rgba(185,28,28,0.3)] z-20'
+                  : 'border border-neutral-800',
+              ]}
+            >
+              {level.badge && (
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-600 text-white text-xs font-bold uppercase z-30">
+                  {level.badge}
+                </span>
+              )}
+              <div class="aspect-square w-full shrink-0 overflow-hidden rounded-t-2xl">
+                <img src={img(level.image, 400, { height: 400 })} srcset={srcset(level.image, [300, 400, 600], 1)} sizes="(min-width: 1536px) 16vw, (min-width: 1024px) 32vw, (min-width: 640px) 48vw, 92vw" alt={level.alt} width="400" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
+                <h3 class="sr-only">{level.name} level</h3>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-brand-500 mb-3 sm:mb-4">{formatUsd(level.price)}</p>
+                <div class="level-benefits-wrap">
+                  <ul class="level-benefits-list list-disc list-inside text-neutral-400 text-sm space-y-1.5 [overflow-wrap:anywhere]" tabindex="0" aria-label={`${level.name} level benefits`}>
+                    {level.benefits.map((b) => <li>{b}</li>)}
+                  </ul>
+                  <div class="level-benefits-fade" aria-hidden="true" />
+                </div>
+                <a
+                  href={TICKET_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class:list={[
+                    'block w-full py-3 rounded-xl text-white font-medium transition-colors text-center mt-auto',
+                    level.featured ? 'bg-brand-600 hover:bg-brand-500' : 'bg-neutral-800 hover:bg-brand-600',
+                  ]}
+                >
+                  Select {level.name} Level
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <p class="text-center text-neutral-400 mt-8">
+      Not sure which level? <a href={`mailto:${CONTACT.email}`} class="text-brand-300 font-medium hover:text-white">Contact {CONTACT.name}</a> to discuss custom options.
+    </p>
+  </div>
+</section>

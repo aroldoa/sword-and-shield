@@ -1,0 +1,27 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { IMPACT } from '../data/site';
+import { img, srcset } from '../lib/img';
+---
+
+<section id="impact" class="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
+  <div class="max-w-[1600px] mx-auto px-4 sm:px-6">
+    <SectionHeading title="See Where Your Support Goes" lede="Real programs. Real results. Real impact on Warriors." />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      {
+        IMPACT.map((item) => (
+          <article class="bg-neutral-900 rounded-3xl border border-neutral-800 overflow-hidden hover:border-brand-600/50 transition-colors">
+            <div class="h-56 bg-neutral-800 overflow-hidden">
+              <img src={img(item.image, 640)} srcset={srcset(item.image, [400, 640, 960])} sizes="(min-width: 768px) 32vw, 92vw" alt={item.title} width="640" height="427" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <p class="text-3xl font-display font-medium text-brand-500 mb-2">{item.stat}</p>
+              <h3 class="text-white font-display uppercase tracking-tight mb-3">{item.title}</h3>
+              <blockquote class="text-neutral-400 text-sm italic">“{item.quote}”</blockquote>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

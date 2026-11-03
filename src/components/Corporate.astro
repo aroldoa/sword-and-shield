@@ -1,0 +1,55 @@
+---
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+import { CORPORATE_BENEFITS, LEVELS, SPONSOR_MAILTO, formatUsd } from '../data/site';
+
+// Highest tier first in this summary list.
+const summary = [...LEVELS].reverse();
+---
+
+<section class="py-12 sm:py-16 lg:py-24 bg-neutral-900 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <SectionHeading
+      title="Corporate Champions: Partner With Purpose"
+      lede="Align your brand with excellence while supporting the next generation of leaders."
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+      <div>
+        <h3 class="text-xl text-white font-display uppercase mb-6">Sponsorship Benefits</h3>
+        <ul class="space-y-4 text-neutral-300">
+          {
+            CORPORATE_BENEFITS.map((b) => (
+              <li class="flex items-start gap-3">
+                <span class="text-brand-500 font-bold" aria-hidden="true">✓</span> {b}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="bg-neutral-950 rounded-2xl border border-neutral-800 p-6 sm:p-8">
+        <h3 class="text-lg sm:text-xl text-white font-display uppercase mb-4 sm:mb-6">Sponsorship Levels</h3>
+        <dl class="divide-y divide-neutral-800">
+          {
+            summary.map((level) => (
+              <div class="py-4 first:pt-0 last:pb-0">
+                <dt class="font-bold text-white">{level.name} – {formatUsd(level.price)}</dt>
+                <dd class="text-neutral-400 text-sm mt-1">{level.summary}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a
+        href={SPONSOR_MAILTO}
+        class="h-14 px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-lg transition-all inline-flex items-center gap-2"
+      >
+        Request the Full Sponsorship Package <Icon name="arrow-right" />
+      </a>
+    </div>
+  </div>
+</section>

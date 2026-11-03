@@ -1,0 +1,198 @@
+---
+import { LIMITS, PHONE_REQUIRED } from '../lib/lead';
+
+const input =
+  'w-full px-4 py-2.5 rounded-xl bg-neutral-800 border border-neutral-700 text-white placeholder:text-neutral-500 text-sm focus:outline-hidden focus:border-brand-500 aria-[invalid=true]:border-red-500 aria-[invalid=true]:focus:border-red-400';
+const error = 'field-error hidden mt-1 text-xs text-red-400 text-left';
+---
+
+<form id="lead-form" class="space-y-3" novalidate>
+  <div id="lead-form-message" class="hidden text-sm text-center py-2 rounded-xl" role="status" aria-live="polite"></div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div>
+      <label class="sr-only" for="lead-first-name">First name</label>
+      <input id="lead-first-name" type="text" name="first_name" placeholder="First name" autocomplete="given-name" maxlength={LIMITS.name} required aria-describedby="err-first_name" class={input} />
+      <p id="err-first_name" class={error}></p>
+    </div>
+    <div>
+      <label class="sr-only" for="lead-last-name">Last name</label>
+      <input id="lead-last-name" type="text" name="last_name" placeholder="Last name" autocomplete="family-name" maxlength={LIMITS.name} required aria-describedby="err-last_name" class={input} />
+      <p id="err-last_name" class={error}></p>
+    </div>
+  </div>
+
+  <div>
+    <label class="sr-only" for="lead-phone">Phone number</label>
+    <input
+      id="lead-phone"
+      type="tel"
+      name="phone"
+      inputmode="tel"
+      placeholder="Phone (210) 555-1234"
+      autocomplete="tel-national"
+      maxlength="18"
+      required={PHONE_REQUIRED}
+      aria-describedby="err-phone"
+      class={input}
+    />
+    <p id="err-phone" class={error}></p>
+  </div>
+
+  <div>
+    <label class="sr-only" for="lead-email">Email address</label>
+    <input id="lead-email" type="email" name="email" inputmode="email" placeholder="Email address" autocomplete="email" maxlength={LIMITS.email} required aria-describedby="err-email" class={input} />
+    <p id="err-email" class={error}></p>
+  </div>
+
+  {/* Honeypot: hidden from people, filled in by naive bots. */}
+  <div class="absolute -left-[9999px] w-px h-px overflow-hidden" aria-hidden="true">
+    <label for="lead-website">Website</label>
+    <input id="lead-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <button
+    type="submit"
+    id="lead-form-submit"
+    class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 disabled:opacity-60 text-white font-medium text-sm transition-colors"
+  >
+    Make a Difference
+  </button>
+</form>
+
+<script>
+  import {
+    type Field,
+    type FieldErrors,
+    PHONE_REQUIRED,
+    formatPhone,
+    suggestEmail,
+    normalizeEmail,
+    validateEmailSyntax,
+    validateLeadFields,
+    validateName,
+    validatePhoneSyntax,
+  } from '../lib/lead';
+
+  const form = document.getElementById('lead-form') as HTMLFormElement | null;
+  const message = document.getElementById('lead-form-message');
+  const submit = document.getElementById('lead-form-submit') as HTMLButtonElement | null;
+
+  if (form && message && submit) {
+    const label = submit.textContent?.trim() ?? 'Submit';
+    const fields: Field[] = ['first_name', 'last_name', 'phone', 'email'];
+    const el = (f: Field) => form.elements.namedItem(f) as HTMLInputElement;
+    const touched = new Set<Field>();
+
+    const validators: Record<Field, (v: string) => string | undefined> = {
+      first_name: (v) => validateName(v, 'First name'),
+      last_name: (v) => validateName(v, 'Last name'),
+      phone: (v) => validatePhoneSyntax(v, PHONE_REQUIRED),
+      email: (v) => validateEmailSyntax(v),
+    };
+
+    const setError = (f: Field, msg?: string) => {
+      const input = el(f);
+      const err = document.getElementById(`err-${f}`)!;
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      err.textContent = msg ?? '';
+      err.classList.toggle('hidden', !msg);
+
+      // "Did you mean …?" becomes a one-tap fix.
+      if (f === 'email' && msg?.startsWith('Did you mean')) {
+        const fix = suggestEmail(normalizeEmail(input.value));
+        if (fix) {
+          err.textContent = '';
+          err.append('Did you mean ');
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'underline font-medium text-white hover:text-brand-400';
+          btn.textContent = fix;
+          btn.addEventListener('click', () => {
+            input.value = fix;
+            setError('email', validators.email(fix));
+            input.focus();
+          });
+          err.append(btn, '?');
+        }
+      }
+    };
+
+    const showErrors = (errors: FieldErrors) => fields.forEach((f) => setError(f, errors[f]));
+
+    const show = (text: string, ok: boolean) => {
+      message.textContent = text;
+      message.classList.remove('hidden', 'text-green-400', 'text-red-400');
+      message.classList.add(ok ? 'text-green-400' : 'text-red-400');
+    };
+
+    // Phone: format as the user types, keeping the caret sensible.
+    const phone = el('phone');
+    phone.addEventListener('input', () => {
+      const atEnd = phone.selectionStart === phone.value.length;
+      phone.value = formatPhone(phone.value);
+      if (atEnd) phone.setSelectionRange(phone.value.length, phone.value.length);
+    });
+
+    // Validate a field once the user leaves it, then live while they fix it.
+    fields.forEach((f) => {
+      const input = el(f);
+      input.addEventListener('blur', () => {
+        if (!input.value.trim() && !touched.has(f)) return; // don't nag on an untouched empty field
+        touched.add(f);
+        setError(f, validators[f](input.value));
+      });
+      input.addEventListener('input', () => {
+        if (touched.has(f)) setError(f, validators[f](input.value));
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      message.classList.add('hidden');
+
+      const values = Object.fromEntries(fields.map((f) => [f, el(f).value])) as Record<Field, string>;
+      const errors = validateLeadFields(values);
+      fields.forEach((f) => touched.add(f));
+      showErrors(errors);
+      const firstBad = fields.find((f) => errors[f]);
+      if (firstBad) {
+        el(firstBad).focus();
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...values,
+            website: (form.elements.namedItem('website') as HTMLInputElement).value,
+          }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (res.ok) {
+          show(body.message || 'Thank you! We will be in touch.', true);
+          form.reset();
+          touched.clear();
+          showErrors({});
+        } else if (body.errors) {
+          // Server-only checks (unassigned area code, domain with no mail server).
+          showErrors(body.errors);
+          const bad = fields.find((f) => body.errors[f]);
+          if (bad) el(bad).focus();
+        } else {
+          show(body.error || 'Something went wrong. Please try again.', false);
+        }
+      } catch {
+        show('Unable to send. Please try again or contact us directly.', false);
+      } finally {
+        submit.disabled = false;
+        submit.textContent = label;
+      }
+    });
+  }
+</script>

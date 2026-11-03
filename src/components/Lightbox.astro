@@ -1,0 +1,120 @@
+---
+// Full-screen photo viewer. Any element with data-lightbox="<gallery>",
+// data-index, data-src and data-alt opens it; galleries are collected from the DOM.
+---
+
+<dialog
+  id="lightbox"
+  class="m-0 p-0 w-screen h-dvh max-w-none max-h-none bg-black/95 text-white backdrop:bg-black/80 open:flex flex-col"
+  aria-label="Photo viewer"
+>
+  <div class="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 shrink-0">
+    <p id="lightbox-caption" class="font-display uppercase tracking-tight text-base sm:text-xl truncate pr-4"></p>
+    <div class="flex items-center gap-3 shrink-0">
+      <span id="lightbox-count" class="text-sm text-neutral-400 tabular-nums"></span>
+      <button type="button" id="lightbox-close" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center" aria-label="Close">
+        <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="lightbox-stage" class="relative flex-1 min-h-0 flex items-center justify-center px-2 sm:px-20 pb-4 sm:pb-8 touch-pan-y select-none">
+    <img id="lightbox-img" alt="" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-opacity duration-300" />
+    <button
+      type="button"
+      id="lightbox-prev"
+      class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur flex items-center justify-center"
+      aria-label="Previous photo"
+    >
+      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+    </button>
+    <button
+      type="button"
+      id="lightbox-next"
+      class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur flex items-center justify-center"
+      aria-label="Next photo"
+    >
+      <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+    </button>
+  </div>
+</dialog>
+
+<script>
+  type Item = { src: string; alt: string };
+
+  const dialog = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const img = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const caption = document.getElementById('lightbox-caption');
+  const count = document.getElementById('lightbox-count');
+  const stage = document.getElementById('lightbox-stage');
+  const prev = document.getElementById('lightbox-prev');
+  const next = document.getElementById('lightbox-next');
+  const close = document.getElementById('lightbox-close');
+
+  if (dialog && img && caption && count && stage && prev && next && close) {
+    // Build each gallery once, de-duplicating marquee copies by index.
+    const galleries = new Map<string, Item[]>();
+    document.querySelectorAll<HTMLElement>('[data-lightbox]').forEach((el) => {
+      const name = el.dataset.lightbox!;
+      const list = galleries.get(name) ?? [];
+      list[Number(el.dataset.index)] = { src: el.dataset.src!, alt: el.dataset.alt ?? '' };
+      galleries.set(name, list);
+    });
+
+    let items: Item[] = [];
+    let current = 0;
+    let opener: HTMLElement | null = null;
+
+    const show = (i: number) => {
+      current = (i + items.length) % items.length;
+      const item = items[current];
+      img.style.opacity = '0';
+      img.onload = () => (img.style.opacity = '1');
+      img.src = item.src;
+      img.alt = item.alt;
+      caption.textContent = item.alt;
+      count.textContent = `${current + 1} / ${items.length}`;
+      // Warm the next image so arrowing feels instant.
+      new Image().src = items[(current + 1) % items.length].src;
+    };
+
+    document.addEventListener('click', (e) => {
+      const el = (e.target as HTMLElement).closest<HTMLElement>('[data-lightbox]');
+      if (!el) return;
+      items = galleries.get(el.dataset.lightbox!) ?? [];
+      if (!items.length) return;
+      opener = el;
+      show(Number(el.dataset.index));
+      dialog.showModal();
+      document.documentElement.style.overflow = 'hidden';
+    });
+
+    dialog.addEventListener('close', () => {
+      document.documentElement.style.overflow = '';
+      img.removeAttribute('src');
+      opener?.focus();
+    });
+
+    prev.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    close.addEventListener('click', () => dialog.close());
+
+    // Click on the dark area (not the photo or controls) closes.
+    stage.addEventListener('click', (e) => {
+      if (e.target === stage) dialog.close();
+    });
+
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+
+    // Swipe left/right on touch screens.
+    let startX = 0;
+    stage.addEventListener('pointerdown', (e) => (startX = e.clientX));
+    stage.addEventListener('pointerup', (e) => {
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+    });
+  }
+</script>

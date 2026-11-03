@@ -1,0 +1,50 @@
+---
+// Inline SVG icons (Lucide shapes for UI; simple brand marks for social),
+// so the page ships no icon runtime.
+type Name = 'arrow-right' | 'menu' | 'x' | 'instagram' | 'facebook' | 'x-brand';
+
+interface Props {
+  name: Name;
+  class?: string;
+  id?: string;
+}
+
+const { name, class: className = 'w-5 h-5', id } = Astro.props;
+
+const stroke = {
+  'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  menu: '<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>',
+  x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+  instagram:
+    '<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>',
+  facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+} as Record<string, string>;
+
+const fill: Record<string, string> = {
+  'x-brand':
+    '<path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.18h1.7L7.4 4.73H5.58l11.09 14.45Z"/>',
+};
+
+const isFill = name in fill;
+const body = isFill ? fill[name] : stroke[name];
+---
+
+{
+  isFill ? (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class={className} id={id} aria-hidden="true" set:html={body} />
+  ) : (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      id={id}
+      aria-hidden="true"
+      set:html={body}
+    />
+  )
+}

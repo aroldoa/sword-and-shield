@@ -1,0 +1,36 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { SPONSOR_TIERS } from '../data/sponsors';
+import { img } from '../lib/img';
+
+// Source logos are up to 1800px wide; the CMS resizes on request.
+// Tiles render logos at most ~180px wide, so 360px stays sharp on retina.
+const sized = (url: string) => img(url, 360);
+---
+
+<section id="sponsors" class="py-12 sm:py-16 lg:py-24 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <SectionHeading title="Thank You to Our Warrior Partners" lede="Join 100+ businesses supporting Cornerstone Christian Schools" />
+
+    {
+      SPONSOR_TIERS.map((t) => (
+        <>
+          <h3 class="text-lg text-neutral-400 font-display uppercase mb-4">{t.tier} Sponsors</h3>
+          <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mb-10">
+            {t.sponsors.map((s) => (
+              <li class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center px-3" title={s.name}>
+                <img src={sized(s.logo)} alt={s.name} loading="lazy" decoding="async" class="max-h-12 max-w-full w-auto object-contain" />
+              </li>
+            ))}
+          </ul>
+        </>
+      ))
+    }
+
+    <div class="text-center">
+      <a href="#levels" class="inline-flex items-center h-14 px-8 rounded-xl border-2 border-white/30 hover:bg-white/10 text-white font-medium transition-all">
+        Become a Sponsor →
+      </a>
+    </div>
+  </div>
+</section>

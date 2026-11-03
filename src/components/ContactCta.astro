@@ -1,0 +1,45 @@
+---
+import { CONTACT, IMG, TICKET_URL } from '../data/site';
+import { img, srcset } from '../lib/img';
+
+const tel = (n: string) => `tel:+1${n.replace(/\D/g, '')}`;
+---
+
+<section class="py-12 sm:py-16 lg:py-24 bg-neutral-950 border-y border-neutral-800">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Ready to Fuel Warrior Excellence?</h2>
+    <p class="text-base sm:text-xl text-neutral-400 mb-8 sm:mb-10">Your support today creates tomorrow's champions.</p>
+
+    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mb-10 sm:mb-12">
+      <a
+        href={TICKET_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-base sm:text-lg transition-all flex items-center justify-center"
+      >
+        Join as Family Member →
+      </a>
+      <a
+        href="#levels"
+        class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl border-2 border-white/30 hover:bg-white/10 text-white font-medium text-base sm:text-lg transition-all flex items-center justify-center"
+      >
+        Sponsor as Business →
+      </a>
+    </div>
+
+    <div class="bg-neutral-900/50 rounded-2xl border border-neutral-800 p-6 sm:p-8 max-w-2xl mx-auto flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+      <div class="shrink-0 w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden bg-neutral-800 border border-neutral-700">
+        <img src={img(IMG.director, 512, { height: 512 })} srcset={srcset(IMG.director, [320, 512], 1)} sizes="(min-width: 768px) 256px, (min-width: 640px) 208px, 160px" alt={`${CONTACT.name}, ${CONTACT.title}`} width="512" height="512" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+      </div>
+      <div class="text-center sm:text-left min-w-0">
+        <h3 class="text-lg sm:text-xl font-display text-white mb-3 sm:mb-4">Contact {CONTACT.title}</h3>
+        <p class="text-white font-medium">{CONTACT.name}</p>
+        <p class="text-neutral-400 text-sm mt-1 break-all">
+          <a href={`mailto:${CONTACT.email}`} class="text-brand-300 hover:text-white">{CONTACT.email}</a>
+        </p>
+        <p class="text-neutral-400 text-sm mt-1">Office: <a href={tel(CONTACT.office)} class="hover:text-white">{CONTACT.office}</a></p>
+        <p class="text-neutral-400 text-sm mt-0.5">Cell: <a href={tel(CONTACT.cell)} class="hover:text-white">{CONTACT.cell}</a></p>
+      </div>
+    </div>
+  </div>
+</section>

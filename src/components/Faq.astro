@@ -1,0 +1,29 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { FAQS } from '../data/site';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<section id="faq" class="py-12 sm:py-16 lg:py-24 max-w-4xl mx-auto px-4 sm:px-6">
+  <SectionHeading title="Common Questions" lede="Everything you need to know about Sword & Shield membership" />
+  <div class="space-y-3 sm:space-y-4">
+    {
+      FAQS.map((f) => (
+        <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-4 sm:p-6">
+          <h3 class="font-sans font-medium text-white mb-2">{f.q}</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed">{f.a}</p>
+        </div>
+      ))
+    }
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>

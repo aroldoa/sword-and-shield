@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import { IMG } from '../data/site';
+// Preload the two Latin font files the first screen needs.
+import interFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import oswaldFont from '@fontsource-variable/oswald/files/oswald-latin-wght-normal.woff2?url';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Sword & Shield | Cornerstone Christian Schools',
+  description = "Sword & Shield is Cornerstone Christian Schools' unified support program, funding excellence across athletics, academics, fine arts, and spiritual development.",
+} = Astro.props;
+
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const ogImage = IMG.membershipBg;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/png" href={IMG.shield} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preload" href={oswaldFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={interFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://ik.imagekit.io" />
+    <link rel="preconnect" href="https://jhm-cms.images.sardius.media" />
+  </head>
+  <body class="bg-brand-950 text-white antialiased selection:bg-brand-600 selection:text-white overflow-x-hidden">
+    <slot />
+  </body>
+</html>

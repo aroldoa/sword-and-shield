@@ -1,0 +1,265 @@
+---
+import Lightbox from './Lightbox.astro';
+import { HALL_OF_FAME_VIDEO, LIFE_PHOTOS, PARTNERSHIP_PHOTOS } from '../data/showcase';
+import { img, srcset } from '../lib/img';
+
+// Originals are 16–24 MB; the CMS resizes on request.
+const sized = (url: string, width: number) => img(url, width);
+
+// Two marquee rows drifting in opposite directions.
+const half = Math.ceil(LIFE_PHOTOS.length / 2);
+const rows = [
+  LIFE_PHOTOS.slice(0, half).map((p, i) => ({ ...p, index: i })),
+  LIFE_PHOTOS.slice(half).map((p, i) => ({ ...p, index: half + i })),
+];
+
+const [featured, ...rest] = PARTNERSHIP_PHOTOS;
+---
+
+<section id="life" class="relative overflow-hidden bg-brand-950 py-16 sm:py-24 lg:py-32">
+  <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-600/15 rounded-full blur-[140px]" aria-hidden="true"></div>
+
+  {/* ── Life at Sword and Shield ─────────────────────────────── */}
+  <div class="relative max-w-[1600px] mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 sm:mb-12">
+      <div>
+        <p class="text-brand-300 font-display uppercase tracking-[0.25em] text-xs sm:text-sm mb-3">Inside the program</p>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase tracking-tighter leading-[0.9]">
+          Life at <span class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-white">Sword&nbsp;&amp;&nbsp;Shield</span>
+        </h2>
+      </div>
+      <p class="text-neutral-400 text-base sm:text-lg md:text-right max-w-sm">
+        See what makes the experience different.
+        <span class="block text-neutral-400 text-sm mt-1">Tap any photo to view it full screen.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="relative space-y-3 sm:space-y-4 marquee-mask">
+    {
+      rows.map((row, r) => (
+        <div class="marquee group/marquee overflow-hidden">
+          <div class:list={['marquee-track flex w-max', r === 1 && 'marquee-reverse']}>
+            {[0, 1].map((copy) =>
+              row.map((p) => (
+                <button
+                  type="button"
+                  class="relative shrink-0 mr-3 sm:mr-4 w-56 sm:w-72 lg:w-80 aspect-[3/2] rounded-2xl overflow-hidden border border-white/5 group/photo focus-visible:outline-2 focus-visible:outline-brand-500"
+                  data-lightbox="life"
+                  data-index={p.index}
+                  data-src={sized(p.src, 1600)}
+                  data-alt={p.alt}
+                  aria-label={`Open ${p.alt}`}
+                  aria-hidden={copy === 1 ? 'true' : undefined}
+                  tabindex={copy === 1 ? -1 : undefined}
+                >
+                  <img
+                    src={sized(p.src, 640)}
+                    srcset={srcset(p.src, [320, 480, 640])}
+                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 224px"
+                    alt=""
+                    width="640"
+                    height="427"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover transition duration-500 group-hover/photo:scale-105 group-hover/photo:brightness-110"
+                  />
+                  <span class="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/photo:opacity-100 transition-opacity" />
+                </button>
+              )),
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  {/* ── Where Dreams Are Enshrined ───────────────────────────── */}
+  <div class="relative max-w-[1600px] mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
+    <div id="hof" class="relative rounded-3xl overflow-hidden border border-neutral-800 bg-black aspect-[4/5] sm:aspect-video lg:aspect-[21/9] group/video">
+      {/* 64 MB file: attached by script only when the viewer scrolls near it.
+          #t=1 shows a real frame before playback since there's no poster image. */}
+      <video
+        id="hof-video"
+        muted
+        loop
+        playsinline
+        preload="none"
+        data-src={`${HALL_OF_FAME_VIDEO}#t=1`}
+        class="absolute inset-0 w-full h-full object-cover"
+      ></video>
+
+      <div id="hof-overlay" class="absolute inset-0 flex flex-col justify-end transition-opacity duration-500">
+        <div class="absolute inset-0 bg-linear-to-t from-black via-black/40 to-black/10" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-linear-to-r from-black/70 via-transparent to-transparent hidden md:block" aria-hidden="true"></div>
+
+        <div class="relative p-6 sm:p-10 lg:p-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div class="max-w-2xl">
+            <p class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-600/90 text-white text-xs font-semibold uppercase tracking-widest mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-white motion-safe:animate-pulse"></span> Featured story
+            </p>
+            <h2 class="text-4xl sm:text-5xl lg:text-7xl font-medium uppercase tracking-tighter leading-[0.9]">
+              Where Dreams<br />Are Enshrined
+            </h2>
+            <p class="mt-3 sm:mt-4 text-neutral-300 text-base sm:text-xl">CCS Football Visits the Pro Football Hall of Fame</p>
+          </div>
+
+          <button
+            type="button"
+            id="hof-play"
+            class="self-start md:self-end inline-flex items-center gap-4 pl-2 pr-6 py-2 rounded-full bg-white text-brand-950 font-medium text-base sm:text-lg hover:bg-neutral-200 transition-colors shadow-[0_0_60px_-10px_rgba(255,255,255,0.4)]"
+          >
+            <span class="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-600 text-white">
+              <span class="absolute inset-0 rounded-full bg-brand-600 motion-safe:animate-ping opacity-40"></span>
+              <svg viewBox="0 0 24 24" class="relative w-5 h-5 sm:w-6 sm:h-6 translate-x-0.5" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14Z" /></svg>
+            </span>
+            Watch with sound
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* ── Powered by Partnership ───────────────────────────────── */}
+  <div class="relative max-w-[1600px] mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 sm:mb-12">
+      <div>
+        <p class="text-brand-300 font-display uppercase tracking-[0.25em] text-xs sm:text-sm mb-3">Your support at work</p>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase tracking-tighter leading-[0.9]">
+          Powered by <span class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-white">Partnership</span>
+        </h2>
+      </div>
+      <p class="text-neutral-400 text-base sm:text-lg md:text-right max-w-sm">Sponsorship Impact Across the CCS Campus</p>
+    </div>
+
+    <ul class="grid grid-cols-2 md:grid-cols-4 auto-rows-[9rem] sm:auto-rows-[12rem] lg:auto-rows-[14rem] gap-3 sm:gap-4">
+      {
+        [featured, ...rest].map((p, i) => (
+          <li class={i === 0 ? 'col-span-2 row-span-2' : undefined}>
+            <button
+              type="button"
+              class="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-800 hover:border-brand-600/60 transition-colors group/tile text-left focus-visible:outline-2 focus-visible:outline-brand-500"
+              data-lightbox="partner"
+              data-index={i}
+              data-src={sized(p.src, 1600)}
+              data-alt={p.alt}
+              aria-label={`Open ${p.alt}`}
+            >
+              <img
+                src={sized(p.src, i === 0 ? 1200 : 640)}
+                srcset={i === 0 ? srcset(p.src, [480, 800, 1200]) : srcset(p.src, [240, 400, 640])}
+                sizes={i === 0 ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 768px) 25vw, 50vw'}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover/tile:scale-110"
+              />
+              <span class="absolute inset-0 bg-linear-to-t from-black/85 via-black/10 to-transparent" aria-hidden="true" />
+              <span class="absolute left-0 right-0 bottom-0 p-3 sm:p-5 flex items-end justify-between gap-2">
+                <span class:list={['font-display uppercase tracking-tight leading-tight text-white', i === 0 ? 'text-xl sm:text-3xl' : 'text-sm sm:text-lg']}>
+                  {p.alt}
+                </span>
+                <span class="hidden sm:flex shrink-0 w-9 h-9 rounded-full bg-white/10 backdrop-blur items-center justify-center text-white opacity-0 translate-y-2 group-hover/tile:opacity-100 group-hover/tile:translate-y-0 transition" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6" /><path d="M9 21H3v-6" /><path d="m21 3-7 7" /><path d="m3 21 7-7" /></svg>
+                </span>
+              </span>
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <Lightbox />
+</section>
+
+<style>
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+  .marquee-track {
+    animation: marquee 90s linear infinite;
+  }
+  .marquee-reverse {
+    animation-direction: reverse;
+    animation-duration: 110s;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    /* Track holds two identical copies (spacing via margin), so -50% loops seamlessly. */
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { overflow-x: auto; }
+    .marquee-track { animation: none; }
+    .marquee-track > [aria-hidden='true'] { display: none; }
+  }
+</style>
+
+<script>
+  const video = document.getElementById('hof-video') as HTMLVideoElement | null;
+  const overlay = document.getElementById('hof-overlay');
+  const play = document.getElementById('hof-play');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (video && overlay && play) {
+    let watching = false; // viewer chose "watch with sound"
+
+    const ensureLoaded = () => {
+      if (video.getAttribute('src') || !video.dataset.src) return;
+      video.preload = 'metadata';
+      video.src = video.dataset.src;
+    };
+
+    play.addEventListener('click', () => {
+      ensureLoaded();
+      watching = true;
+      video.muted = false;
+      video.loop = false;
+      video.controls = true;
+      video.currentTime = 0;
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      video.play().catch(() => {});
+    });
+
+    // Bring the overlay back when the film ends.
+    video.addEventListener('ended', () => {
+      watching = false;
+      video.controls = false;
+      video.muted = true;
+      video.loop = true;
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+    });
+
+    if ('IntersectionObserver' in window) {
+      // Start fetching a little before it scrolls into view.
+      const near = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          ensureLoaded();
+          near.disconnect();
+        },
+        { rootMargin: '600px 0px' },
+      );
+      near.observe(video);
+
+      new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            // Muted ambient preview while on screen (not for reduced motion).
+            if (!watching && !reduceMotion && video.paused) video.play().catch(() => {});
+          } else if (!video.paused) {
+            video.pause();
+          }
+        },
+        { threshold: 0.4 },
+      ).observe(video);
+    } else {
+      ensureLoaded();
+    }
+  }
+</script>

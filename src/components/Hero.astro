@@ -1,0 +1,171 @@
+---
+import LeadForm from './LeadForm.astro';
+import { HERO_SLIDES, HERO_VIDEO, IMG, STATS, TICKET_URL } from '../data/site';
+import { img, srcset } from '../lib/img';
+
+const fmt = (s: (typeof STATS)[number], n: number) => `${s.prefix ?? ''}${Math.round(n).toLocaleString('en-US')}${s.suffix ?? ''}`;
+---
+
+<section class="relative min-h-screen flex items-center justify-center pt-16 sm:pt-20 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    {/* Poster paints instantly; the (large) video is attached by script on desktop only. */}
+    <video
+      id="hero-video"
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster={img(IMG.football, 960)}
+      data-src={HERO_VIDEO}
+      class="w-full h-full object-cover opacity-40"
+      aria-hidden="true"
+    ></video>
+    <div class="absolute inset-0 bg-linear-to-b from-brand-950/80 via-brand-950/40 to-brand-950"></div>
+    <div class="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-brand-600/30 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-900/20 rounded-full blur-[100px]"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mt-6 sm:mt-10">
+    <div class="space-y-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300">
+        <span class="relative flex h-2 w-2">
+          <span class="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+        </span>
+        <span class="text-sm font-medium tracking-wide uppercase">Supporting Warriors</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-medium uppercase leading-[0.9] tracking-tighter">
+        Power <br />
+        <span class="text-transparent bg-clip-text bg-linear-to-r from-brand-500 to-white">Excellence.</span> <br />
+        Fuel Champions.
+      </h1>
+
+      <p class="text-base sm:text-xl text-neutral-300 max-w-lg leading-relaxed">
+        Your Sword &amp; Shield membership empowers Warriors across athletics, academics, fine arts, and spiritual development.
+      </p>
+
+      <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
+        <a
+          href={TICKET_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-base sm:text-lg transition-all shadow-[0_0_40px_-10px_rgba(185,28,28,0.5)] flex items-center justify-center gap-3"
+        >
+          Join Sword &amp; Shield <img src={img(IMG.shield, 32)} alt="" width="16" height="20" class="w-4 h-5 inline-block shrink-0" aria-hidden="true" />
+        </a>
+        <a
+          href="#levels"
+          class="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 rounded-xl border-2 border-white/50 hover:bg-white/10 text-white font-medium text-base sm:text-lg transition-all flex items-center justify-center gap-3"
+        >
+          Become a Business Sponsor
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 2xl:grid-cols-4 gap-3 sm:gap-4 max-w-3xl pt-8">
+        {
+          STATS.map((s) => (
+            <div class="glass rounded-xl p-4 text-center">
+              {/* Final value is rendered server-side; the script animates up to it. */}
+              <span
+                class="block text-2xl md:text-3xl font-display font-medium text-white tabular-nums"
+                data-count-end={s.end}
+                data-count-prefix={s.prefix}
+                data-count-suffix={s.suffix}
+              >
+                {fmt(s, s.end)}
+              </span>
+              <span class="text-xs md:text-sm text-neutral-400">{s.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="relative">
+      <div class="absolute top-10 right-10 w-full h-full border-2 border-brand-600/20 rounded-3xl translate-x-4 translate-y-4 hidden lg:block" aria-hidden="true"></div>
+
+      <div class="relative bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden shadow-2xl">
+        <div class="relative h-80">
+          {
+            HERO_SLIDES.map((slide, i) => (
+              <img
+                src={img(slide.src, 800)}
+                srcset={srcset(slide.src, [480, 800, 1200])}
+                sizes="(min-width: 1024px) 45vw, 92vw"
+                alt={slide.alt}
+                width="800"
+                height="533"
+                class="card-image-cycle absolute inset-0 w-full h-full object-cover"
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            ))
+          }
+          <div class="absolute inset-0 bg-linear-to-t from-neutral-900 to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-4 left-6 right-6 z-10">
+            <span class="block text-brand-300 font-display uppercase tracking-widest text-sm mb-1">Cornerstone Christian Schools</span>
+            <h2 class="text-3xl font-medium tracking-tight">One Membership. Total Impact.</h2>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <LeadForm />
+          <p class="text-xs text-neutral-400 text-center">Every membership dollar goes directly to student programs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Hero video: desktop + decent connection + motion allowed, after the page has loaded.
+  const video = document.getElementById('hero-video') as HTMLVideoElement | null;
+  const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+  const okForVideo =
+    window.matchMedia('(min-width: 768px)').matches &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+    !conn?.saveData &&
+    !/(^|-)2g|3g/.test(conn?.effectiveType ?? '');
+  if (video?.dataset.src && okForVideo) {
+    const attach = () => {
+      video.src = video.dataset.src!;
+      video.play().catch(() => {});
+    };
+    const idle = (cb: () => void) => ('requestIdleCallback' in window ? requestIdleCallback(cb, { timeout: 2000 }) : setTimeout(cb, 200));
+    if (document.readyState === 'complete') idle(attach);
+    else window.addEventListener('load', () => idle(attach), { once: true });
+  }
+
+  const counters = document.querySelectorAll<HTMLElement>('[data-count-end]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const section = counters[0]?.closest('section');
+
+  if (counters.length && section && !reduceMotion && 'IntersectionObserver' in window) {
+    const DURATION = 2000;
+    const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+    const format = (el: HTMLElement, n: number) =>
+      (el.dataset.countPrefix ?? '') + Math.round(n).toLocaleString('en-US') + (el.dataset.countSuffix ?? '');
+
+    const run = (el: HTMLElement) => {
+      const end = Number(el.dataset.countEnd);
+      let start: number | null = null;
+      const step = (ts: number) => {
+        start ??= ts;
+        const progress = Math.min((ts - start) / DURATION, 1);
+        el.textContent = format(el, end * easeOutQuart(progress));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        observer.disconnect();
+        counters.forEach(run);
+      },
+      { threshold: 0.2 },
+    );
+    observer.observe(section);
+  }
+</script>
