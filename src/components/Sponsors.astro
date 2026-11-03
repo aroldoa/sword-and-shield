@@ -5,12 +5,12 @@ import { img } from '../lib/img';
 const { sponsorTiers: SPONSOR_TIERS } = Astro.locals.site;
 
 // Source logos are up to 1800px wide; the CMS resizes on request.
-// Tiles render logos at most ~180px wide, so 360px stays sharp on retina.
-const sized = (url: string) => img(url, 360);
+// Tiles render logos at most ~240px wide, so 480px stays sharp on retina.
+const sized = (url: string) => img(url, 480);
 ---
 
 <section id="sponsors" class="py-12 sm:py-16 lg:py-24 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
     <SectionHeading title="Thank You to Our Warrior Partners" lede="Join 100+ businesses supporting Cornerstone Christian Schools" />
 
     {
@@ -19,8 +19,8 @@ const sized = (url: string) => img(url, 360);
           <h3 class="reveal text-lg text-neutral-400 font-display uppercase mb-4">{t.tier} Sponsors</h3>
           <ul class="reveal-stagger grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 mb-10">
             {t.sponsors.map((s) => (
-              <li class="h-20 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center px-3" title={s.name}>
-                <img src={sized(s.logo)} alt={s.name} loading="lazy" decoding="async" class="max-h-12 max-w-full w-auto object-contain" />
+              <li class="h-24 sm:h-28 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center px-3 sm:px-4" title={s.name}>
+                <img src={sized(s.logo)} alt={s.name} loading="lazy" decoding="async" class="max-h-16 sm:max-h-20 max-w-full w-auto object-contain" />
               </li>
             ))}
           </ul>
