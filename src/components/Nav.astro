@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { IMG, NAV_LINKS, TICKET_URL } from '../data/site';
+import { HEADER_JOIN_URL, IMG, NAV_LINKS } from '../data/site';
 ---
 
 <nav class="fixed w-full z-50 top-0 glass border-x-0 border-t-0 border-b-white/5">
@@ -14,7 +14,7 @@ import { IMG, NAV_LINKS, TICKET_URL } from '../data/site';
     </div>
 
     <a
-      href={TICKET_URL}
+      href={HEADER_JOIN_URL}
       target="_blank"
       rel="noopener noreferrer"
       class="hidden lg:flex group relative px-6 py-3 rounded-lg overflow-hidden bg-white text-brand-950 font-medium transition-all hover:bg-neutral-200"
@@ -40,7 +40,7 @@ import { IMG, NAV_LINKS, TICKET_URL } from '../data/site';
   <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 right-0 glass border-x-0 border-t-0 border-b-white/5 px-4 py-4">
     <div class="flex flex-col gap-4">
       {NAV_LINKS.map((l) => <a href={l.href} class="text-neutral-300 hover:text-white text-lg py-2">{l.label}</a>)}
-      <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-lg bg-white text-brand-950 font-medium text-center">
+      <a href={HEADER_JOIN_URL} target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-lg bg-white text-brand-950 font-medium text-center">
         Join Sword &amp; Shield
       </a>
     </div>

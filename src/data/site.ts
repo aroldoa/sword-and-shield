@@ -1,5 +1,8 @@
 // All page content lives here so copy and pricing changes don't require touching markup.
 
+// Header "Join Sword & Shield" buttons (desktop + mobile menu).
+export const HEADER_JOIN_URL = 'https://events.hometownticketing.com/boxoffice/cornerstone/L2VtYmVkL2V2ZW50LzQxOA==';
+
 export const TICKET_URL =
   'https://events.hometownticketing.com/boxoffice/cornerstone/L2VtYmVkL2V2ZW50LzEzP2FjY2Vzc19jb2RlPWJjMzVkZDRiZDkwZTJkZGVlM2EzOTBjMTUwMTNjNGM4ZDFhYWIzZjY%3D';
 
