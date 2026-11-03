@@ -1,7 +1,8 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import { SPONSOR_TIERS } from '../data/sponsors';
 import { img } from '../lib/img';
+
+const { sponsorTiers: SPONSOR_TIERS } = Astro.locals.site;
 
 // Source logos are up to 1800px wide; the CMS resizes on request.
 // Tiles render logos at most ~180px wide, so 360px stays sharp on retina.

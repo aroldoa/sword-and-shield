@@ -1,0 +1,122 @@
+import {defineArrayMember, defineField, defineType} from 'sanity'
+import {HomeIcon} from '@sanity/icons/Home'
+
+export const homePage = defineType({
+  name: 'homePage',
+  type: 'document',
+  title: 'Home page',
+  icon: HomeIcon,
+  groups: [
+    {name: 'hero', title: 'Hero', default: true},
+    {name: 'programs', title: 'Programs'},
+    {name: 'membership', title: 'Membership'},
+    {name: 'impact', title: 'Impact'},
+    {name: 'faq', title: 'FAQ'},
+    {name: 'gallery', title: 'Gallery'},
+  ],
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      group: 'hero',
+      description: 'Internal Studio label',
+      initialValue: 'Home',
+      hidden: true,
+      readOnly: true,
+    }),
+    defineField({
+      name: 'heroSlides',
+      title: 'Hero slideshow images',
+      type: 'array',
+      group: 'hero',
+      description: 'Images shown behind / beside the hero (desktop slideshow)',
+      of: [defineArrayMember({type: 'heroSlide'})],
+    }),
+    defineField({
+      name: 'stats',
+      title: 'Hero stats',
+      type: 'array',
+      group: 'hero',
+      description: 'Animated counters under the hero headline',
+      of: [defineArrayMember({type: 'stat'})],
+      validation: (rule) => rule.max(6).warning('Keep to 4–6 stats for a clean layout'),
+    }),
+    defineField({
+      name: 'programs',
+      title: 'Programs',
+      type: 'array',
+      group: 'programs',
+      description: 'Athletics, Fine Arts, Academics, 4-H, etc.',
+      of: [defineArrayMember({type: 'program'})],
+    }),
+    defineField({
+      name: 'levels',
+      title: 'Membership levels',
+      type: 'array',
+      group: 'membership',
+      description: 'Red → Title Sponsor pricing cards',
+      of: [defineArrayMember({type: 'membershipLevel'})],
+    }),
+    defineField({
+      name: 'corporateBenefits',
+      title: 'Corporate benefits bullets',
+      type: 'array',
+      group: 'membership',
+      description: 'Checklist in the corporate partnership section',
+      of: [defineArrayMember({type: 'string'})],
+    }),
+    defineField({
+      name: 'impact',
+      title: 'Impact stories',
+      type: 'array',
+      group: 'impact',
+      description: '“See where your support goes” cards',
+      of: [defineArrayMember({type: 'impactStory'})],
+    }),
+    defineField({
+      name: 'faqs',
+      title: 'FAQs',
+      type: 'array',
+      group: 'faq',
+      of: [defineArrayMember({type: 'faqItem'})],
+    }),
+    defineField({
+      name: 'lifePhotos',
+      title: 'Life photos (legacy)',
+      type: 'array',
+      group: 'gallery',
+      description: 'Deprecated — use Life photos in the sidebar to upload new images.',
+      deprecated: {
+        reason: 'Upload and manage life photos from the Life photos menu instead.',
+      },
+      readOnly: true,
+      hidden: ({value}) => !value || (Array.isArray(value) && value.length === 0),
+      of: [defineArrayMember({type: 'photo'})],
+    }),
+    defineField({
+      name: 'partnershipPhotos',
+      title: 'Partnership / impact photos',
+      type: 'array',
+      group: 'gallery',
+      description: 'Equipment and facility gallery. Paste image URLs for now.',
+      of: [defineArrayMember({type: 'photo'})],
+      options: {layout: 'grid'},
+    }),
+    defineField({
+      name: 'hallOfFameVideoUrl',
+      title: 'Hall of Fame video URL',
+      type: 'url',
+      group: 'gallery',
+      validation: (rule) => rule.uri({scheme: ['http', 'https']}),
+    }),
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Home page',
+        subtitle: 'Hero, programs, membership, FAQ, gallery',
+        media: HomeIcon,
+      }
+    },
+  },
+})

@@ -1,7 +1,9 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import { CONTACT, LEVELS, TICKET_URL, formatUsd } from '../data/site';
+import { formatUsd } from '../data/site';
 import { img, srcset } from '../lib/img';
+
+const { contact: CONTACT, levels: LEVELS, ticketUrl: TICKET_URL } = Astro.locals.site;
 ---
 
 <section id="levels" class="py-12 sm:py-16 lg:py-24 bg-neutral-900 relative">

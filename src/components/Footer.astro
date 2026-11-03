@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
-import { CONTACT, IMG, SOCIAL } from '../data/site';
 
+const { contact: CONTACT, img: IMG, social: SOCIAL } = Astro.locals.site;
 const year = new Date().getFullYear();
 
 const socials = [

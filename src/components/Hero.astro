@@ -1,7 +1,14 @@
 ---
 import LeadForm from './LeadForm.astro';
-import { HERO_SLIDES, HERO_VIDEO, IMG, STATS, TICKET_URL } from '../data/site';
 import { img, srcset } from '../lib/img';
+
+const {
+  heroSlides: HERO_SLIDES,
+  heroVideo: HERO_VIDEO,
+  img: IMG,
+  stats: STATS,
+  ticketUrl: TICKET_URL,
+} = Astro.locals.site;
 
 const fmt = (s: (typeof STATS)[number], n: number) => `${s.prefix ?? ''}${Math.round(n).toLocaleString('en-US')}${s.suffix ?? ''}`;
 ---

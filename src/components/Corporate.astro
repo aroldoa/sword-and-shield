@@ -1,7 +1,13 @@
 ---
 import Icon from './Icon.astro';
 import SectionHeading from './SectionHeading.astro';
-import { CORPORATE_BENEFITS, LEVELS, SPONSOR_MAILTO, formatUsd } from '../data/site';
+import { formatUsd } from '../data/site';
+
+const {
+  corporateBenefits: CORPORATE_BENEFITS,
+  levels: LEVELS,
+  sponsorMailto: SPONSOR_MAILTO,
+} = Astro.locals.site;
 
 // Highest tier first in this summary list.
 const summary = [...LEVELS].reverse();

@@ -1,6 +1,7 @@
 ---
-import { IMG, PROGRAMS } from '../data/site';
 import { img, srcset } from '../lib/img';
+
+const { img: IMG, programs: PROGRAMS } = Astro.locals.site;
 ---
 
 <section id="membership" class="relative overflow-hidden bg-neutral-950 min-h-[70vh] sm:min-h-[85vh] flex flex-col justify-center py-12 sm:py-20 md:py-28 lg:py-36">

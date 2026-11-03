@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
-import { HEADER_JOIN_URL, IMG, NAV_LINKS } from '../data/site';
+
+const { headerJoinUrl: HEADER_JOIN_URL, img: IMG, navLinks: NAV_LINKS } = Astro.locals.site;
 ---
 
 <nav class="fixed w-full z-50 top-0 glass border-x-0 border-t-0 border-b-white/5">

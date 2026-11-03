@@ -1,7 +1,8 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import { IMPACT } from '../data/site';
 import { img, srcset } from '../lib/img';
+
+const { impact: IMPACT } = Astro.locals.site;
 ---
 
 <section id="impact" class="py-12 sm:py-16 lg:py-24 relative overflow-hidden">

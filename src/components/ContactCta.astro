@@ -1,7 +1,7 @@
 ---
-import { CONTACT, IMG, TICKET_URL } from '../data/site';
 import { img, srcset } from '../lib/img';
 
+const { contact: CONTACT, img: IMG, ticketUrl: TICKET_URL } = Astro.locals.site;
 const tel = (n: string) => `tel:+1${n.replace(/\D/g, '')}`;
 ---
 

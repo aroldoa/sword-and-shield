@@ -1,7 +1,12 @@
 ---
 import Lightbox from './Lightbox.astro';
-import { HALL_OF_FAME_VIDEO, LIFE_PHOTOS, PARTNERSHIP_PHOTOS } from '../data/showcase';
 import { img, srcset } from '../lib/img';
+
+const {
+  hallOfFameVideo: HALL_OF_FAME_VIDEO,
+  lifePhotos: LIFE_PHOTOS,
+  partnershipPhotos: PARTNERSHIP_PHOTOS,
+} = Astro.locals.site;
 
 // Originals are 16–24 MB; the CMS resizes on request.
 const sized = (url: string, width: number) => img(url, width);

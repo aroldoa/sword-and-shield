@@ -1,6 +1,7 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import { FAQS } from '../data/site';
+
+const { faqs: FAQS } = Astro.locals.site;
 
 const faqSchema = {
   '@context': 'https://schema.org',

@@ -24,6 +24,16 @@ export function img(url: string, width: number, opts: { height?: number; cover?:
     return u.toString();
   }
 
+  // Sanity image CDN
+  if (u.hostname === 'cdn.sanity.io') {
+    u.searchParams.set('w', String(width));
+    if (opts.height) u.searchParams.set('h', String(opts.height));
+    if (opts.cover || opts.height) u.searchParams.set('fit', 'crop');
+    u.searchParams.set('auto', 'format');
+    u.searchParams.set('q', String(QUALITY));
+    return u.toString();
+  }
+
   return url;
 }
 

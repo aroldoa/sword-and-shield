@@ -15,3 +15,7 @@ node_modules/
 # Astro
 dist/
 .astro/
+
+# Sanity Studio
+studio/dist/
+studio/.sanity/
