@@ -84,3 +84,34 @@
   pointer-events: none;
   background: linear-gradient(to top, var(--color-brand-950), transparent);
 }
+
+/* ── Scroll reveal ─────────────────────────────────────────────
+   Usage: add `reveal` to an element, or `reveal-stagger` to a parent
+   to reveal its children one after another. Content is only hidden once
+   the reveal script has run (html.reveal-ready), so it never stays
+   invisible without JS. Uses `animation` (not `transition`) so it doesn't
+   override components' own hover transitions. */
+.reveal-ready .reveal:not(.is-revealed),
+.reveal-ready .reveal-stagger > :not(.is-revealed) {
+  opacity: 0;
+}
+.is-revealed {
+  animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+@keyframes reveal-up {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Hero entrance on page load (the H1 itself stays static so it paints instantly). */
+.hero-in {
+  animation: reveal-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .reveal:not(.is-revealed),
+  .reveal-ready .reveal-stagger > :not(.is-revealed) { opacity: 1; }
+  .is-revealed, .hero-in { animation: none; }
+}

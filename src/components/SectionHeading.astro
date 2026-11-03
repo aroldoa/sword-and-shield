@@ -3,11 +3,13 @@ interface Props {
   title: string;
   lede?: string;
   class?: string;
+  /** Center the title and lede. */
+  center?: boolean;
 }
-const { title, lede, class: className = 'mb-8 sm:mb-12' } = Astro.props;
+const { title, lede, class: className = 'mb-8 sm:mb-12', center = false } = Astro.props;
 ---
 
-<div class={className}>
+<div class:list={[className, 'reveal', center && 'text-center']}>
   <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">{title}</h2>
-  {lede && <p class="text-base sm:text-xl text-neutral-400 max-w-2xl">{lede}</p>}
+  {lede && <p class:list={['text-base sm:text-xl text-neutral-400 max-w-2xl', center && 'mx-auto']}>{lede}</p>}
 </div>

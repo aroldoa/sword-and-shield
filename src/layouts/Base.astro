@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { stegaClean } from '@sanity/client/stega';
 import SanityVisualEditing from '../components/SanityVisualEditing';
 import DisableDraftMode from '../components/DisableDraftMode';
+import ScrollReveal from '../components/ScrollReveal.astro';
 // Preload the two Latin font files the first screen needs.
 import interFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import oswaldFont from '@fontsource-variable/oswald/files/oswald-latin-wght-normal.woff2?url';
@@ -51,6 +52,7 @@ const cleanShield = stegaClean(IMG.shield);
   </head>
   <body class="bg-brand-950 text-white antialiased selection:bg-brand-600 selection:text-white overflow-x-hidden">
     <slot />
+    <ScrollReveal />
     {
       draftMode && (
         <>

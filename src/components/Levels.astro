@@ -7,13 +7,14 @@ const { contact: CONTACT, levels: LEVELS, ticketUrl: TICKET_URL } = Astro.locals
 ---
 
 <section id="levels" class="py-12 sm:py-16 lg:py-24 bg-neutral-900 relative">
-  <div class="w-full px-4 sm:px-6 lg:px-8">
+  <div class="max-w-[1600px] 2xl:max-w-[1840px] mx-auto px-4 sm:px-6 lg:px-8">
     <SectionHeading
+      center
       title="Choose Your Impact Level"
       lede="Select the sponsorship level that fits your business and see the direct impact on our Warriors."
     />
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6 gap-4 sm:gap-5">
+    <div class="reveal-stagger flex flex-wrap justify-center gap-5 sm:gap-6">
       {
         LEVELS.map((level) => {
           const highlighted = Boolean(level.badge);
@@ -21,6 +22,8 @@ const { contact: CONTACT, levels: LEVELS, ticketUrl: TICKET_URL } = Astro.locals
             <article
               class:list={[
                 'bg-neutral-950 rounded-2xl flex flex-col relative',
+                // Fixed-width cards that wrap and center: 1 → 2 → 3 per row, all 5 on very wide screens.
+                'w-full max-w-[24rem] sm:w-[calc((100%-1.5rem)/2)] sm:max-w-[22rem] lg:w-[calc((100%-3rem)/3)] lg:max-w-[24rem] 2xl:w-[calc((100%-6rem)/5)] 2xl:max-w-[21rem]',
                 highlighted
                   ? 'border-2 border-brand-600 shadow-[0_0_40px_-10px_rgba(185,28,28,0.3)] z-20'
                   : 'border border-neutral-800',
@@ -32,7 +35,7 @@ const { contact: CONTACT, levels: LEVELS, ticketUrl: TICKET_URL } = Astro.locals
                 </span>
               )}
               <div class="aspect-square w-full shrink-0 overflow-hidden rounded-t-2xl">
-                <img src={img(level.image, 400, { height: 400 })} srcset={srcset(level.image, [300, 400, 600], 1)} sizes="(min-width: 1536px) 16vw, (min-width: 1024px) 32vw, (min-width: 640px) 48vw, 92vw" alt={level.alt} width="400" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+                <img src={img(level.image, 400, { height: 400 })} srcset={srcset(level.image, [320, 480, 768], 1)} sizes="(min-width: 1536px) 336px, (min-width: 1024px) 384px, (min-width: 640px) 352px, min(92vw, 384px)" alt={level.alt} width="400" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover" />
               </div>
               <div class="p-4 sm:p-6 flex flex-col flex-1 min-h-0">
                 <h3 class="sr-only">{level.name} level</h3>

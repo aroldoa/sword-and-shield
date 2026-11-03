@@ -34,7 +34,7 @@ const fmt = (s: (typeof STATS)[number], n: number) => `${s.prefix ?? ''}${Math.r
 
   <div class="relative z-10 container mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mt-6 sm:mt-10">
     <div class="space-y-8">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300">
+      <div class="hero-in inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300">
         <span class="relative flex h-2 w-2">
           <span class="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
@@ -48,11 +48,11 @@ const fmt = (s: (typeof STATS)[number], n: number) => `${s.prefix ?? ''}${Math.r
         Fuel Champions.
       </h1>
 
-      <p class="text-base sm:text-xl text-neutral-300 max-w-lg leading-relaxed">
+      <p class="hero-in text-base sm:text-xl text-neutral-300 max-w-lg leading-relaxed" style="--reveal-delay: 120ms">
         Your Sword &amp; Shield membership empowers Warriors across athletics, academics, fine arts, and spiritual development.
       </p>
 
-      <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
+      <div class="hero-in flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4" style="--reveal-delay: 220ms">
         <a
           href={TICKET_URL}
           target="_blank"
@@ -69,7 +69,7 @@ const fmt = (s: (typeof STATS)[number], n: number) => `${s.prefix ?? ''}${Math.r
         </a>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 2xl:grid-cols-4 gap-3 sm:gap-4 max-w-3xl pt-8">
+      <div class="hero-in grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 2xl:grid-cols-4 gap-3 sm:gap-4 max-w-3xl pt-8" style="--reveal-delay: 320ms">
         {
           STATS.map((s) => (
             <div class="glass rounded-xl p-4 text-center">
@@ -89,7 +89,7 @@ const fmt = (s: (typeof STATS)[number], n: number) => `${s.prefix ?? ''}${Math.r
       </div>
     </div>
 
-    <div class="relative">
+    <div class="relative hero-in" style="--reveal-delay: 200ms">
       <div class="absolute top-10 right-10 w-full h-full border-2 border-brand-600/20 rounded-3xl translate-x-4 translate-y-4 hidden lg:block" aria-hidden="true"></div>
 
       <div class="relative bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden shadow-2xl">

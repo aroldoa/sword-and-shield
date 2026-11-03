@@ -26,7 +26,7 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
 
   {/* ── Life at Sword and Shield ─────────────────────────────── */}
   <div class="relative max-w-[1600px] mx-auto px-4 sm:px-6">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 sm:mb-12">
+    <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 sm:mb-12">
       <div>
         <p class="text-brand-300 font-display uppercase tracking-[0.25em] text-xs sm:text-sm mb-3">Inside the program</p>
         <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase tracking-tighter leading-[0.9]">
@@ -40,7 +40,7 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
     </div>
   </div>
 
-  <div class="relative space-y-3 sm:space-y-4 marquee-mask">
+  <div class="reveal relative space-y-3 sm:space-y-4 marquee-mask" style="--reveal-delay: 120ms">
     {
       rows.map((row, r) => (
         <div class="marquee group/marquee overflow-hidden">
@@ -49,7 +49,7 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
               row.map((p) => (
                 <button
                   type="button"
-                  class="relative shrink-0 mr-3 sm:mr-4 w-56 sm:w-72 lg:w-80 aspect-[3/2] rounded-2xl overflow-hidden border border-white/5 group/photo focus-visible:outline-2 focus-visible:outline-brand-500"
+                  class="relative shrink-0 mr-3 sm:mr-4 w-72 sm:w-96 lg:w-[28rem] aspect-[3/2] rounded-2xl overflow-hidden border border-white/5 group/photo focus-visible:outline-2 focus-visible:outline-brand-500"
                   data-lightbox="life"
                   data-index={p.index}
                   data-src={sized(p.src, 1600)}
@@ -60,8 +60,8 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
                 >
                   <img
                     src={sized(p.src, 640)}
-                    srcset={srcset(p.src, [320, 480, 640])}
-                    sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 224px"
+                    srcset={srcset(p.src, [400, 640, 960])}
+                    sizes="(min-width: 1024px) 448px, (min-width: 640px) 384px, 288px"
                     alt=""
                     width="640"
                     height="427"
@@ -81,7 +81,7 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
 
   {/* ── Where Dreams Are Enshrined ───────────────────────────── */}
   <div class="relative max-w-[1600px] mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
-    <div id="hof" class="relative rounded-3xl overflow-hidden border border-neutral-800 bg-black aspect-[4/5] sm:aspect-video lg:aspect-[21/9] group/video">
+    <div id="hof" class="reveal relative rounded-3xl overflow-hidden border border-neutral-800 bg-black aspect-[2/3] sm:aspect-[3/2] lg:aspect-[2/1] group/video">
       {/* 64 MB file: attached by script only when the viewer scrolls near it.
           #t=1 shows a real frame before playback since there's no poster image. */}
       <video
@@ -127,7 +127,7 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
 
   {/* ── Powered by Partnership ───────────────────────────────── */}
   <div class="relative max-w-[1600px] mx-auto px-4 sm:px-6 mt-20 sm:mt-28">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 sm:mb-12">
+    <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 sm:mb-12">
       <div>
         <p class="text-brand-300 font-display uppercase tracking-[0.25em] text-xs sm:text-sm mb-3">Your support at work</p>
         <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium uppercase tracking-tighter leading-[0.9]">
@@ -137,7 +137,7 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
       <p class="text-neutral-400 text-base sm:text-lg md:text-right max-w-sm">Sponsorship Impact Across the CCS Campus</p>
     </div>
 
-    <ul class="grid grid-cols-2 md:grid-cols-4 auto-rows-[9rem] sm:auto-rows-[12rem] lg:auto-rows-[14rem] gap-3 sm:gap-4">
+    <ul class="reveal-stagger grid grid-cols-2 md:grid-cols-4 auto-rows-[9rem] sm:auto-rows-[12rem] lg:auto-rows-[14rem] gap-3 sm:gap-4">
       {
         [featured, ...rest].map((p, i) => (
           <li class={i === 0 ? 'col-span-2 row-span-2' : undefined}>
@@ -183,11 +183,11 @@ const [featured, ...rest] = PARTNERSHIP_PHOTOS;
     mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
   }
   .marquee-track {
-    animation: marquee 90s linear infinite;
+    animation: marquee 125s linear infinite;
   }
   .marquee-reverse {
     animation-direction: reverse;
-    animation-duration: 110s;
+    animation-duration: 150s;
   }
   .marquee:hover .marquee-track,
   .marquee:focus-within .marquee-track {

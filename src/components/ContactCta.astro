@@ -7,10 +7,10 @@ const tel = (n: string) => `tel:+1${n.replace(/\D/g, '')}`;
 
 <section class="py-12 sm:py-16 lg:py-24 bg-neutral-950 border-y border-neutral-800">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Ready to Fuel Warrior Excellence?</h2>
-    <p class="text-base sm:text-xl text-neutral-400 mb-8 sm:mb-10">Your support today creates tomorrow's champions.</p>
+    <h2 class="reveal text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tighter mb-3 sm:mb-4">Ready to Fuel Warrior Excellence?</h2>
+    <p class="reveal text-base sm:text-xl text-neutral-400 mb-8 sm:mb-10" style="--reveal-delay: 100ms">Your support today creates tomorrow's champions.</p>
 
-    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mb-10 sm:mb-12">
+    <div class="reveal flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mb-10 sm:mb-12" style="--reveal-delay: 180ms">
       <a
         href={TICKET_URL}
         target="_blank"
@@ -27,7 +27,7 @@ const tel = (n: string) => `tel:+1${n.replace(/\D/g, '')}`;
       </a>
     </div>
 
-    <div class="bg-neutral-900/50 rounded-2xl border border-neutral-800 p-6 sm:p-8 max-w-2xl mx-auto flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+    <div class="reveal bg-neutral-900/50 rounded-2xl border border-neutral-800 p-6 sm:p-8 max-w-2xl mx-auto flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
       <div class="shrink-0 w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden bg-neutral-800 border border-neutral-700">
         <img src={img(IMG.director, 512, { height: 512 })} srcset={srcset(IMG.director, [320, 512], 1)} sizes="(min-width: 768px) 256px, (min-width: 640px) 208px, 160px" alt={`${CONTACT.name}, ${CONTACT.title}`} width="512" height="512" loading="lazy" decoding="async" class="w-full h-full object-cover" />
       </div>
