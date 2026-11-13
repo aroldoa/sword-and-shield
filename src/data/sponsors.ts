@@ -45,6 +45,7 @@ export const SPONSOR_TIERS: SponsorTier[] = [
       { name: "McKenzie Family", logo: "https://jhm-cms.images.sardius.media/media/5agljjma/mckenzie-family-gold-sponsors.png" },
       { name: "Alta Moda", logo: "https://jhm-cms.images.sardius.media/media/y1pnu3mt/alta-moda-gold.png" },
       { name: "Appleton Moving Companies", logo: "https://jhm-cms.images.sardius.media/media/qn3fh0qd/appleton-moving-companies-combined-logo.png" },
+      { name: "Onsite Contracting", logo: "https://cdn.sanity.io/images/euqufp3t/production/56b99afee6bc116033ec64940d9bb3ebb2b88a0a-306x153.png" },
     ],
   },
   {
